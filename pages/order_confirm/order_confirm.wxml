@@ -1,0 +1,62 @@
+<!--pages/order_confirm/order_confirm.wxml-->
+<view class="address_head">
+  <image class="address_icon" src="../../image/28px_35px_dizhi.png"></image>
+  <text class="address_ask">您还没有收货地址</text>
+  <text class="adress_alert">请先填写收货地址方便收货</text>
+  <image class="address_right" src="../../image/17px_30px_la.png"></image>
+</view>
+<view class="goods_area">
+  <view class="list_head">
+    <image class="logo_img" src="../../image/44px_logo.png"></image>
+    <text class="shop_name">麦田香草</text>
+  </view>
+  <view class="goods_list">
+    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text>
+    <text class="goods_express">快递发货</text>
+    <text class="goods_price">￥9.9</text>
+    <text class="goods_num">x23</text>
+  </view>
+  <view class="goods_list">
+    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text>
+    <text class="goods_express">快递发货</text>
+    <text class="goods_price">￥9.9</text>
+    <text class="goods_num">x23</text>
+  </view>
+
+</view>
+<view class="info_area">
+  <view class="area_1">
+    <text class="area_left">商品金额(2件)</text>
+    <text class="area_right">￥19.80</text>
+
+  </view>
+  <view class="area_1">
+    <text class="area_left">商品金额(2件)</text>
+    <text class="area_right">￥19.80</text>
+  </view>
+</view>
+<view class="money_area">
+  <text class="money_left">总金额</text>
+  <text class="money_right">￥19.80</text>
+</view>
+<view class="coupon_area">
+  <view class="coupon_list">
+    <image class="coupon_image" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="coupon_text">满减优惠</text>
+    <text class="coupon_price">-￥10.00</text>
+  </view>
+</view>
+
+
+<view class="pay_way">
+  <text class="pay_text">付款方式</text>
+  <image class="pay_image" src="../../image/17px_30px_la.png"></image>
+</view>
+
+<view class="confirm_bottom">
+  <text class="bottom_1">实付金额:</text>
+  <text class="bottom_2">￥19.08</text>
+  <text class="bottom_3">确定支付</text>
+</view>

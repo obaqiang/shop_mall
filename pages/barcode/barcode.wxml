@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container page">
+  <view class="panel">
+    
+    
+    <view class="qrcode">
+      <canvas canvas-id="qrcode" />
+    </view>
+  </view>
+</view>

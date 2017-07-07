@@ -1,0 +1,247 @@
+/* pages/xinzhuce/xinzhuce.wxss */
+
+page {
+  height: 100%;
+}
+
+text, view {
+  font-family: "微软雅黑";
+}
+
+.c_box {
+  position: relative;
+  background: #eee;
+  overflow: hidden;
+  height: 100%;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.row1 {
+  width: 100%;
+  margin: 94rpx 0 0 0;
+}
+
+.nameBox {
+  width: 370rpx;
+  height: 72rpx;
+  background: white;
+  float: left;
+}
+
+.iconName {
+  display: block;
+  width: 45rpx;
+  height: 50rpx;
+  float: left;
+  margin: 11rpx 0 0 83rpx;
+}
+
+.inputName {
+  display: block;
+  float: left;
+  width: 200rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  margin-left: 35rpx;
+}
+
+.sexBox {
+  width: 370rpx;
+  height: 72rpx;
+  background: white;
+  float: right;
+  font-size: 26rpx;
+}
+
+.radio-group {
+  text-align: left;
+  margin-left: 60rpx;
+  margin-top: 12rpx;
+}
+
+.radio {
+  margin-right: 30rpx;
+  color: #333;
+}
+
+.row2 {
+  width: 100%;
+  height: 72rpx;
+  background: white;
+  margin-top: 24rpx;
+}
+
+.iconPhone {
+  display: block;
+  float: left;
+  width: 30rpx;
+  height: 50rpx;
+  margin: 11rpx 0 0 90rpx;
+}
+
+.inputPhone {
+  display: block;
+  float: left;
+  width: 500rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  margin-left: 42rpx;
+}
+
+.row3 {
+  width: 584rpx;
+  margin: 24rpx auto 0 auto;
+}
+
+.btnYanzheng {
+  display: block;
+  float: left;
+  width: 287rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background: #3474b2;
+  color: white;
+  font-size: 26rpx;
+}
+
+.inputYanzheng {
+  display: block;
+  float: right;
+  width: 289rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background: white;
+  font-size: 26rpx;
+}
+
+.row4 {
+  width: 100%;
+  height: 72rpx;
+  background: white;
+  margin-top: 24rpx;
+  position: relative;
+}
+
+.iconHangye {
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  float: left;
+  margin: 11rpx 0 0 83rpx;
+}
+
+.picker {
+  float: left;
+  width: 500rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  margin-left: 33rpx;
+  text-align: left;
+}
+
+.row5 {
+  width: 100%;
+  height: 72rpx;
+  background: white;
+  margin-top: 24rpx;
+}
+
+.iconGongsi {
+  display: block;
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 11rpx 0 0 83rpx;
+}
+
+.inputGongsi {
+  display: block;
+  float: left;
+  width: 500rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  margin-left: 33rpx;
+}
+
+.row6 {
+  width: 100%;
+  height: 72rpx;
+  background: white;
+  margin-top: 24rpx;
+}
+
+.iconZhiwei {
+  display: block;
+  float: left;
+  width: 52rpx;
+  height: 50rpx;
+  margin: 11rpx 0 0 83rpx;
+}
+
+.iconDw {
+  display: block;
+  float: left;
+  width: 36rpx;
+  height: 50rpx;
+  margin: 11rpx 0 0 91rpx;
+}
+
+.inputZhiwei {
+  display: block;
+  float: left;
+  width: 500rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  margin-left: 31rpx;
+}
+
+.btnNext {
+  display: block;
+  width: 650rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: white;
+  background: #ff9f38;
+  position: fixed;
+  bottom: 50rpx;
+  left: 50%;
+  margin-left: -325rpx;
+  border-radius: 4rpx;
+}
+
+.zhuce_logo {
+  display: block;
+  width: 256rpx;
+  height: 175rpx;
+  margin: 50rpx auto 0 auto;
+}
+
+.text_xieyi {
+  width: 100%;
+  text-align: center;
+  color: #7d8aac;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+
+.text_xieyi view {
+  color: #00abe1;
+  display: inline;
+}
+
+.tanchuang {
+  height: 600rpx;
+  overflow: scroll;
+}

@@ -1,0 +1,116 @@
+/* pages/order_card/order_card.wxss */
+
+page{
+  background: #f0f0f2;
+}
+.bg_card {
+  width: 90%;
+  height: 400rpx;
+  margin: 20rpx auto;
+  display: block;
+}
+
+.bg_icon {
+  position: absolute;
+  top: 60rpx;
+  left: 70rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.bg_qr {
+  width: 50rpx;
+  position: absolute;
+  height: 50rpx;
+  right: 80rpx;
+  top: 60rpx;
+}
+
+.shop_name {
+  font-size: 30rpx;
+  color: #fff;
+  position: absolute;
+  top: 70rpx;
+  left: 190rpx;
+}
+
+.shop_type {
+  font-size: 30rpx;
+  color: #fff;
+  position: absolute;
+  top: 120rpx;
+  left: 190rpx;
+}
+
+.card_num {
+  color: #fff;
+  font-size: 40rpx;
+  position: absolute;
+  top: 350rpx;
+  left: 80rpx;
+}
+
+.card_list {
+  overflow: hidden;
+  padding-left: 20rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+  background: #fff;
+}
+
+.list_head {
+  border-top: 1rpx solid #ddd;
+  
+}
+
+.list_de {
+  font-size: 30rpx;
+  line-height: 100rpx;
+}
+
+.list_img {
+  width: 20rpx;
+  height: 30rpx;
+  float: right;
+  margin: 40rpx;
+}
+.card_area{
+  background: #fff;
+  padding-top:20rpx;
+  padding-bottom: 20rpx;
+}
+.list_nav{
+  border-top: 1rpx solid #ddd;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+.icon_1{
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.icon_1 image{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  margin: 20rpx auto;
+}
+.info_area {
+  padding: 0rpx 30rpx;
+  overflow: hidden;
+  line-height: 100rpx;
+  position: relative;
+  background: #fff;
+}
+.info_area image {
+  width: 50rpx;
+  height: 30rpx;
+}
+.info_area_text {
+  color: #666;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}

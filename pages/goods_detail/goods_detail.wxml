@@ -1,0 +1,42 @@
+<!--pages/goods_detail/goods_detail.wxml-->
+<swiper style="height:500rpx;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item >
+      <image src="{{item}}" class="slide-image" style="width:100%;" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="info_area">
+  <text class="goods_price">￥9.9</text>
+  <text class="goods_express">快递/到店</text>
+  <text class="goods_stock">10积分*已售1222件</text>
+</view>
+
+<view class="goods_name">炒鸡无敌好吃的慕斯蛋糕，吃饿了你想吐</view>
+
+<view class="goods_desc">
+  产品描述：前轱辘转，前轱辘转弯，后咕噜转，后咕噜转，后轱辘转完钱咕噜转
+</view>
+
+<view class="express_info">
+  <text class="express_price">快递 0.00</text>
+  <text class="express_area">江苏苏州</text>
+</view>
+<view class="line_area"></view>
+<view class="img_area">
+
+  <text class="img_desc">商品详情</text>
+  <image class="img_list" src="../../image/img_1.png"></image>
+  <image class="img_list" src="../../image/img_1.png"></image>
+  <image class="img_list" src="../../image/img_1.png"></image>
+</view>
+
+<view class="nav_bottom">
+  <image class="bottom_img" src="../../image/40px_40px_gouwuche.png"></image>
+  <text class="bottom_name">购物车</text>
+  <text class="bottom_num">12</text>
+  <text class="bottom_buy">立即购买</text>
+  <text class="bottom_add">加入购物车</text>
+
+</view>

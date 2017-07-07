@@ -1,0 +1,164 @@
+/* pages/order_detail/order_detail.wxss */
+@import "../order_confirm/order_confirm.wxss";
+
+page {
+  background: #f2f2f2;
+}
+
+.status_img {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+}
+
+.status_text {
+  font-size: 30rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 90rpx;
+  color: #ff5205;
+}
+
+.order_status {
+  position: relative;
+  height: 100rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.order_info {
+  background: #fff;
+  margin-top: 30rpx;
+  padding: 20rpx;
+}
+
+.info_title {
+  display: block;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  margin-left: 30rpx;
+}
+
+.info_list {
+  display: block;
+  font-size: 25rpx;
+  line-height: 60rpx;
+  margin-left: 50rpx;
+}
+
+.order_bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.bot_left {
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+
+.bot_right {
+  float: right;
+  text-align: center;
+  width: 50%;
+}
+
+.left_img {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 10rpx;
+}
+
+.right_img {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 10rpx;
+}
+
+.left_text {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.right_text {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.qrcode {
+  height: 420rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.qrcode {
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.qrcode > canvas {
+  margin-top: 100rpx;
+  width: 420rpx;
+  height: 420rpx;
+}
+
+.barcode_area {
+  background: #fff;
+  margin-top: 30rpx;
+  position: relative;
+}
+
+.ver {
+  font-size: 30rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+}
+
+.ver_num {
+  font-size: 30rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 140rpx;
+}
+
+.ver_status {
+  font-size: 30rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 20rpx;
+}
+.address_detail{
+  background: #fff;
+  position: relative;
+  padding: 20rpx;
+}
+.ad_de_img{
+  width:30rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 30rpx;
+}
+.ad_de_name{
+  font-size: 25rpx;
+  display: block;
+  margin-left: 60rpx;
+}
+.ad_de_more{
+  font-size: 25rpx;
+  margin-left: 60rpx;
+  color: #686868;
+}

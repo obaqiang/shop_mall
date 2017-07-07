@@ -1,0 +1,61 @@
+<!--pages/shop_car/shop_car.wxml-->
+
+<!--<view class="car_head">
+  <text class="head_title">快递/到店</text>
+  <text class="head_title">快递发货</text>
+  <text class="head_title">到店领取</text>
+</view>
+<view class="goods_area">
+  <view class="goods_list">
+    <text class="cho_cir"></text>
+    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，吃了一次你就像吐</text>
+    <text class="goods_ser">快递/到店</text>
+    <text class="goods_price">￥9.9</text>
+    <view class="goods_num">
+      <image class="min_img" src="../../image/30px_4px_jian.png"></image>
+      <text class="num_cho">01</text>
+      <image class="plus_img" src="../../image/30px_30px_jia.png"></image>
+    </view>
+  </view>
+  <view class="goods_list">
+    <text class="cho_cir"></text>
+    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，吃了一次你就像吐</text>
+    <text class="goods_ser">快递/到店</text>
+    <text class="goods_price">￥9.9</text>
+    <view class="goods_num">
+      <image class="min_img" src="../../image/30px_4px_jian.png"></image>
+      <text class="num_cho">01</text>
+      <image class="plus_img" src="../../image/30px_30px_jia.png"></image>
+    </view>
+  </view>
+  <view class="goods_list">
+    <text class="cho_cir"></text>
+    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
+    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，吃了一次你就像吐</text>
+    <text class="goods_ser">快递/到店</text>
+    <text class="goods_price">￥9.9</text>
+    <view class="goods_num">
+      <image class="min_img" src="../../image/30px_4px_jian.png"></image>
+      <text class="num_cho">01</text>
+      <image class="plus_img" src="../../image/30px_30px_jia.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class="car_bottom">
+  <text class="all_cir"></text>
+  <text class="all_cho">全选</text>
+  <text class="all_num">总计(0件):</text>
+  <text class="all_price">￥1003.00</text>
+  <text class="all_go">去结算</text>
+</view>-->
+
+<view class="no_goods">
+ <view class="no_goods_text_1">购物车快饿瘦了</view>
+ <view class="no_goods_text_2">快给我挑选宝贝</view>
+ <view class="no_goods_text_3">去逛逛</view>
+ <image class="no_goods_img" src="../../image/40px_40px_logo.png"></image>
+ <view class="no_goods_bd">BD贵宾卡提供技术支持</view>
+</view>

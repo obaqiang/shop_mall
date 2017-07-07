@@ -1,0 +1,34 @@
+/* pages/new_address/new_address.wxss */
+
+.new_name {
+  font-size: 30rpx;
+  line-height: 100rpx;
+  position: relative;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.name_text {
+  margin-left: 30rpx;
+}
+
+.name_input {
+  position: absolute;
+  top: 28rpx;
+  left: 150rpx;
+}
+
+.way_input {
+  position: absolute;
+  top: 28rpx;
+  left: 180rpx;
+}
+.address_input{
+  position: absolute;
+  top: 28rpx;
+  left: 180rpx;
+}
+.btn_save{
+  width: 95%;
+  margin: 40rpx auto;
+  color: #fff;
+}

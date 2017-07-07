@@ -1,0 +1,106 @@
+/* pages/address/address.wxss */
+page{
+  background: #f0f0f0;
+}
+.address_list{
+  background: #fff;
+  width: 90%;
+  margin: 20rpx auto;
+  border-radius: 10rpx;
+  padding-top: 40rpx;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+.address_name{
+  display: block;
+  color: #3d4245;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.address_tel{
+  position: absolute;
+  top: 40rpx;
+  right: 30rpx;
+  font-size: 30rpx;
+  color: #3d4245;
+}
+.address_more{
+  font-size: 30rpx;
+  color: #666666;
+  display: block;
+  border-bottom: 1rpx solid #ddd;
+  width: 90%;
+  margin: 20rpx auto;
+  padding-bottom: 40rpx;
+}
+.cho_img{
+  width: 25rpx;
+  height: 25rpx;
+  border: 1rpx solid #272636;
+  border-radius: 50%;
+  margin-left: 40rpx;
+  display: inline-block;
+}
+.address_list{
+  font-size: 30rpx;
+  color: #929597;
+}
+.cho_mo{
+  margin-left: 15rpx;
+  font-size: 25rpx;
+}
+.edit_img{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 220rpx;
+}
+.del_img{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.edit_text{
+  font-size: 25rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.del_text{
+  font-size: 25rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.cho_img_get{
+  width: 25rpx;
+  height: 25rpx;
+  border: 1rpx solid #eb4f38;
+  border-radius: 50%;
+  margin-left: 40rpx;
+  display: inline-block;
+  background: #eb4f38;
+}
+.cho_area{
+  position: relative;
+}
+.cho_img_hook{
+  margin-left: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.no_address{
+  padding-top: 300rpx;
+}
+.no_address_img{
+  display: block;
+  width: 60%;
+  margin: auto;
+}
+.address_alert{
+  display: block;
+  font-size: 30rpx;
+  color: #9D9D9D;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.address_area{
+  display: none;
+}

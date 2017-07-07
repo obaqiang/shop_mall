@@ -1,0 +1,194 @@
+/* pages/order_confirm/order_confirm.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.address_head {
+  background: #fff;
+  position: relative;
+  height: 150rpx;
+}
+
+.address_icon {
+  width: 30rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 50rpx;
+  left: 50rpx;
+}
+
+.address_right {
+  width: 20rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 50rpx;
+}
+
+.address_icon {
+  position: absolute;
+}
+
+.address_ask {
+  position: absolute;
+  top: 20rpx;
+  left: 100rpx;
+  width: 300rpx;
+  font-size: 30rpx;
+}
+.adress_alert{
+  font-size: 30rpx;
+  position: absolute;
+  top: 80rpx;
+  left: 100rpx;
+}
+.logo_img{
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  top: 10rpx;
+  left: 20rpx;
+}
+.goods_area{
+  margin-top: 20rpx;
+  background:#fff;
+}
+.shop_name{
+  font-size:30rpx;
+  margin-left: 60rpx;
+  line-height: 100rpx;
+}
+.goods_img{
+  width: 180rpx;
+  height: 170rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+}
+.goods_list{
+  position: relative;
+  height: 200rpx;
+  background: #f2f2f2;
+  margin-top: 20rpx;
+}
+.goods_desc{
+  font-size: 30rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 230rpx;
+  width: 500rpx;
+}
+.goods_express{
+  font-size: 25rpx;
+  position: absolute;
+  top: 100rpx;
+  left: 230rpx;
+}
+.goods_price{
+  position: absolute;
+  top: 140rpx;
+  left: 230rpx;
+}
+.goods_num{
+  position: absolute;
+  right: 40rpx;
+  top: 150rpx;
+  font-size: 30rpx;
+}
+.info_area{
+  background: #fff;
+  border-bottom: 1rpx solid #ddd;
+}
+.area_1{
+  overflow: hidden;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: #999999;
+}
+.area_left{
+  float: left;
+  margin-left: 20rpx;
+
+}
+.area_right{
+  float: right;
+  margin-right: 20rpx;
+
+}
+.money_area{
+  background: #fff;
+  overflow: hidden;
+  font-size: 35rpx;
+  line-height: 70rpx;
+}
+.money_left{
+  float: left;
+  margin-left: 20rpx;
+}
+.money_right{
+  float: right;
+  margin-right: 20rpx;
+  color: #cb2920;
+}
+.pay_way{
+  overflow: hidden;
+  background: #fff;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  line-height: 80rpx;
+}
+.pay_image{
+  width: 20rpx;
+  height: 30rpx;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+.pay_text{
+  float: left;
+  margin-left: 20rpx;
+}
+.confirm_bottom{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  background: #fff;
+}
+.bottom_1{
+  font-size: 30rpx;
+}
+.bottom_2{
+  font-size: 40rpx;
+}
+.bottom_3{
+  font-size: 40rpx;
+  float: right;
+
+}
+.coupon_image{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+}
+.coupon_text{
+  font-size: 30rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 100rpx;
+}
+.coupon_price{
+  font-size: 30rpx;
+  position: absolute;
+  top: 25rpx;
+  right: 20rpx;
+}
+.coupon_area{
+  background: #fff;
+}
+.coupon_list{
+  position: relative;
+  height: 100rpx;
+}

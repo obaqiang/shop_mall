@@ -1,0 +1,62 @@
+{
+  "pages":[
+    "pages/index_home/index_home",
+    "pages/order_detail/order_detail",
+    "pages/address/address",
+    "pages/express/express",
+    
+    "pages/shop_car/shop_car",
+    "pages/shop_mine/shop_mine",
+    
+    "pages/coupon/coupon",
+    
+    "pages/order_confirm/order_confirm",
+    "pages/new_address/new_address",
+    
+    "pages/goods_detail/goods_detail",
+    
+    
+    
+    "pages/shop_city/shop_city"
+      
+    
+    
+  ],
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#cb2920",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "image/42px_42px_shouye1.png",
+        "iconPath": "image/42px_42px_shouye2.png",
+        "pagePath": "pages/index_home/index_home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "image/42px_42px_shangcheng1.png",
+        "iconPath": "image/42px_42px_shangcheng2.png",
+        "pagePath": "pages/shop_city/shop_city",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "image/42px_42px_gouwuche1.png",
+        "iconPath": "image/42px_42px_gouwuche2.png",
+        "pagePath": "pages/shop_car/shop_car",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "image/42px_42px_wode1.png",
+        "iconPath": "image/42px_42px_wode2.png",
+        "pagePath": "pages/shop_mine/shop_mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

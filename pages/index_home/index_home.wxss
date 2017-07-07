@@ -1,0 +1,84 @@
+/* pages/index_home/index_home.wxss */
+page{
+  background: #f2f2f2;
+}
+.logo_img{
+  width: 100%;
+  height: 300rpx;
+}
+.goods_list{
+  background: #fff;
+  margin-top: 20rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.goods_img{
+  margin: auto;
+  display: block;
+  width: 90%;
+  height: 400rpx;
+}
+.goods_des{
+  display: block;
+  width: 90%;
+  margin: 20rpx auto;
+  color: #151516;
+
+}
+.act_area{
+  position: relative;
+  margin-top: 50rpx;
+}
+.cor_text{
+  color: #cb2920;
+
+  font-size: 45rpx;
+  margin-left: 40rpx;
+}
+.join_text{
+  color: #9c9c9c;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.btn_go{
+  width: 200rpx;
+  line-height: 75rpx;
+  height: 75rpx;
+  background: #cb2920;
+  color: #fff;
+  position: absolute;
+  top: -10rpx;
+  right: 30rpx;
+  font-size: 30rpx;
+}
+.no_goods{
+  position: relative;
+}
+.no_goods_img{
+  width:40%;
+  margin-top: 100rpx;
+  margin-left: 60rpx;
+}
+.text_1{
+  position: absolute;
+  top: 250rpx;
+  left: 420rpx;
+  font-size: 35rpx;
+  color: #686868;
+}
+.text_2{
+  position: absolute;
+  font-size: 30rpx;
+  top: 340rpx;
+  left: 470rpx;
+  color: #686868;
+}
+.text_3{
+  border:1rpx solid #ff5202;
+  color:#ff5202;
+  position: absolute;
+  top: 600rpx;
+  padding: 15rpx 30rpx;
+  border-radius: 10rpx;
+  left: 280rpx;
+}

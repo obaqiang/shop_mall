@@ -1,0 +1,39 @@
+<!--pages/new_address/new_address.wxml-->
+<view class="new_name">
+  <text class="name_text">收货人:</text>
+  <input class="name_input" placeholder="拉拉" />
+</view>
+<view class="new_name">
+  <text class="name_text">联系方式:</text>
+  <input class="way_input" placeholder="拉拉" />
+</view>
+<view class="new_name">
+  <text class="name_text">所在地区:</text>
+  <input class="address_input" placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+</view>
+
+<view class="new_name">
+  <text class="name_text">详细地址:</text>
+  <input class="way_input" placeholder="街道，楼牌号等" />
+
+</view>
+
+<button class="btn_save">保存</button>
+
+<view wx:if="{{condition}}" class="citypicker">
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+    <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

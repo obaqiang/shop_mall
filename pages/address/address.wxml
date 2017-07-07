@@ -1,0 +1,38 @@
+<!--pages/address/address.wxml-->
+<view class="address_area">
+  <view class="address_list">
+    <text class="address_name">拉拉</text>
+    <text class="address_tel">13032115858</text>
+    <text class="address_more">江苏省昆山shi巴啦啦啊是独立空间h</text>
+    <view class="cho_area">
+      <text class="cho_img"></text>
+      <text class="cho_mo">设为默认</text>
+      <image class="edit_img" src="../../image/36px_36px_bianji.png"></image>
+      <text class="edit_text">编辑</text>
+      <image class="del_img" src="../../image/36px_36px_shanchu.png"></image>
+      <text class="del_text">删除</text>
+    </view>
+
+  </view>
+  <view class="address_list">
+    <text class="address_name">拉拉</text>
+    <text class="address_tel">13032115858</text>
+    <text class="address_more">江苏省昆山shi巴啦啦啊是独立空间h</text>
+    <view class="cho_area">
+
+      <image class="cho_img_hook" src="../../image/32px_32px_V.png"></image>
+      <text class="cho_mo">设为默认</text>
+      <image class="edit_img" src="../../image/36px_36px_bianji.png"></image>
+      <text class="edit_text">编辑</text>
+      <image class="del_img" src="../../image/36px_36px_shanchu.png"></image>
+      <text class="del_text">删除</text>
+    </view>
+
+  </view>
+</view>
+
+
+<view class="no_address">
+  <image class="no_address_img" src="../../image/294px_256px_dizhi.png"></image>
+  <text class="address_alert">您还没有收货地址哦~</text>
+</view>

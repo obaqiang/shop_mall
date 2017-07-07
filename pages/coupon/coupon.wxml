@@ -1,0 +1,8 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="coupon_head">
+  <text class="coupon_list">待使用</text>
+  <text class="coupon_list">已过期</text>
+  <text class="coupon_list">已使用</text>
+</view>
+
+<view class="coupon_area"></view>

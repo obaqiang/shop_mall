@@ -1,0 +1,107 @@
+/* pages/car/car.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.car_head {
+  border-bottom: 1rpx solid #ddd;
+  background: #fff;
+}
+
+.head_title {
+  display: inline-block;
+  margin: 0 60rpx;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+  border-bottom: 5rpx solid #cb2920;
+}
+
+.cho_cir {
+  border: 1rpx solid #ddd;
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  position: absolute;
+  top: 100rpx;
+  left: 20rpx;
+}
+
+.goods_list {
+  position: relative;
+  background: #fff;
+  height: 250rpx;
+  margin-top: 20rpx;
+}
+
+.goods_area {
+  margin-top: 20rpx;
+}
+
+.goods_img {
+  width: 180rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 90rpx;
+  border: 1rpx solid #ddd;
+}
+
+.goods_desc {
+  position: absolute;
+  display: inline-block;
+  font-size: 30rpx;
+  width: 400rpx;
+  left: 300rpx;
+  top: 20rpx;
+}
+
+.goods_ser {
+  font-size: 25rpx;
+  position: absolute;
+  top: 105rpx;
+  left: 300rpx;
+}
+
+.goods_price {
+  position: absolute;
+  top: 140rpx;
+  left: 300rpx;
+}
+
+.min_img {
+  width: 40rpx;
+  height: 5rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+}
+
+.plus_img {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 15rpx;
+}
+
+.goods_num {
+  position: absolute;
+  top: 160rpx;
+  right: 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 10rpx;
+  width: 250rpx;
+  height: 70rpx;
+}
+
+.num_cho {
+  border-left: 1rpx solid #ddd;
+  border-right: 1rpx solid #ddd;
+  position: absolute;
+  left: 70rpx;
+  line-height: 70rpx;
+  width: 100rpx;
+  text-align: center;
+}

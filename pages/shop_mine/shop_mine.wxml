@@ -1,0 +1,49 @@
+<!--pages/order_card/order_card.wxml-->
+<view class="card_area">
+  <image class="bg_card" src="http://img.bdvip.net/wxsmprogram/622px_374px_ka.png"></image>
+  <image class="bg_icon" src="{{getvipinfo_data.Store.logo_img}}"></image>
+  <image class="bg_qr" bindtap="seeCodeJump" src="http://img.bdvip.net/wxsmprogram/42px_42px_erweima.png"></image>
+  <text class="shop_name">{{getvipinfo_data.Store.store_name}}</text>
+  <text class="shop_type">会员卡</text>
+  <text class="card_num">{{cardcode}}</text>
+</view>
+<view class="info_area">
+  <image src="http://img.bdvip.net/wxsmprogram/30px_18px_huiyuanka.png"></image>
+  <text class="info_area_text">会员卡</text>
+  <button wx:if="{{hascard==false}}" class="btn_get">领取</button>
+  <text wx:if="{{hascard==true}}" class="see_card">查看</text>
+</view>
+
+
+<view class="list_nav">
+  <view class="icon_1" data-status="one" bindtap="seeOrderJump">
+    <image src="http://img.bdvip.net/wxsmprogram/36px_36px_icon1.png"></image>
+    <text>全部订单</text>
+  </view>
+  <view class="icon_1" data-status="two" bindtap="seeOrderJump">
+    <image src="http://img.bdvip.net/wxsmprogram/36px_36px_icon2.png"></image>
+    <text>待付款</text>
+  </view>
+  <view class="icon_1" data-status="three" bindtap="seeOrderJump">
+    <image src="http://img.bdvip.net/wxsmprogram/36px_36px_icon3.png"></image>
+    <text>未完成</text>
+  </view>
+  <view class="icon_1" data-status="four" bindtap="seeOrderJump">
+    <image src="http://img.bdvip.net/wxsmprogram/36px_36px_icon4.png"></image>
+    <text>已完成</text>
+  </view>
+</view>
+
+
+<view class="card_list list_head" bindtap="cardJump">
+  <text class="list_de">会员卡详情</text>
+  <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
+</view>
+<view class="card_list " bindtap="seeCodeJump">
+  <text class="list_de">我的二维码</text>
+  <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
+</view>
+<!--<view class="card_list ">
+  <text class="list_de">试用门店</text>
+  <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
+</view>-->

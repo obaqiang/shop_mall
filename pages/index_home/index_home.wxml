@@ -1,0 +1,35 @@
+<!--pages/index_home/index_home.wxml-->
+<image class="logo_img" src="../../image/750px_280px_banner.png"></image>
+<!--<view class="goods_list">
+  <image class="goods_img" src="../../image/676px_464px_chanpintu.png"></image>
+  <text class="goods_des">正宗嘉兴【蛋黄大肉粽】真空包装撒。。</text>
+  <view class="act_area">
+    <text class="cor_text">拼团￥9.9</text>
+    <text class="join_text">已参加658人</text>
+    <button class="btn_go">去参加 ></button>
+  </view>
+</view>
+<view class="goods_list">
+  <image class="goods_img" src="../../image/676px_464px_chanpintu.png"></image>
+  <text class="goods_des">正宗嘉兴【蛋黄大肉粽】真空包装撒。。</text>
+  <view class="act_area">
+    <text class="cor_text">拼团￥9.9</text>
+    <text class="join_text">已参加658人</text>
+    <button class="btn_go">去参加 ></button>
+  </view>
+</view>
+<view class="goods_list">
+  <image class="goods_img" src="../../image/676px_464px_chanpintu.png"></image>
+  <text class="goods_des">正宗嘉兴【蛋黄大肉粽】真空包装撒。。</text>
+  <view class="act_area">
+    <text class="cor_text">拼团￥9.9</text>
+    <text class="join_text">已参加658人</text>
+    <button class="btn_go">去参加 ></button>
+  </view>
+</view>-->
+<view class="no_goods">
+  <image class="no_goods_img" src="../../image/288px_496px_haibuhai.png"></image>
+  <text class="text_1">商家暂无活动T.T </text>
+  <text class="text_2">敬请期待</text>
+  <text class="text_3">去逛逛</text>
+</view>

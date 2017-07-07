@@ -1,0 +1,113 @@
+/* pages/goods_detail/goods_detail.wxss */
+
+.goods_price {
+  color: #cb2920;
+  font-size: 50rpx;
+  margin-left: 30rpx;
+}
+
+.goods_express {
+  color: #ff9205;
+  font-size: 20rpx;
+  border: 1rpx solid #ff9205;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  margin-left: 20rpx;
+}
+
+.goods_stock {
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  color: #555;
+  font-size: 30rpx;
+}
+
+.goods_name {
+  color: #151515;
+  text-align: center;
+  font-size: 35rpx;
+  margin-top: 20rpx;
+}
+
+.goods_desc {
+  width: 90%;
+  margin: 20rpx auto;
+  font-size: 30rpx;
+  color: #5e5f61;
+}
+
+.express_info {
+  color: #828282;
+  font-size: 30rpx;
+}
+
+.express_price {
+  margin-left: 30rpx;
+}
+
+.express_area {
+  float: right;
+  margin-right: 30rpx;
+}
+
+.line_area {
+  width: 100%;
+  height: 40rpx;
+  background: #f2f2f2;
+  margin-top: 20rpx;
+}
+
+.img_list {
+  width: 100%;
+}
+
+.img_desc {
+  color: #333;
+  font-size: 30rpx;
+  display: inline-block;
+  margin: 30rpx;
+}
+.nav_bottom{
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  overflow: hidden;
+}
+.bottom_img{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 40rpx;
+}
+.bottom_name{
+  position: absolute;
+  color: #828282;
+  top: 70rpx;
+  left: 30rpx;
+  font-size: 25rpx;
+}
+.bottom_add{
+  float: right;
+  background: #ff9600;
+  padding: 30rpx 50rpx;
+  color: #fff;
+}
+.bottom_buy{
+  float: right;
+  background: #e02e24;
+  padding: 30rpx 50rpx;
+  color: #fff;
+}
+.bottom_num{
+  background: #e02e24;
+  border-radius: 50%;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 5rpx;
+  position: absolute;
+  left: 80rpx;
+  top: 5rpx;
+}
