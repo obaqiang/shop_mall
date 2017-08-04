@@ -1,0 +1,104 @@
+/* pages/my_order/my_order.wxss */
+page{
+  background: #f0f0f2;
+}
+.list_head{
+  border-bottom: 1rpx solid #ddd;
+  overflow: hidden;
+  background: #fff;
+}
+.list_body{
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 100rpx;
+}
+.list_area{
+  position: relative;
+  background: #fff;
+  height: 150rpx;
+  margin-top: 20rpx;
+}
+.area_icon{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 20rpx;
+  top:30rpx;
+}
+.area_1{
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  font-size: 30rpx;
+}
+.area_2{
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  font-size: 30rpx;
+  color: #b2b2b2;
+  border: 1rpx solid #ddd;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+.area_3{
+  position: absolute;
+  top: 100rpx;
+  left: 20rpx;
+  font-size: 25rpx;
+}
+.area_4{
+  position: absolute;
+  top: 100rpx;
+  right: 220rpx;
+  font-size: 30rpx;
+}
+.area_5{
+  position: absolute;
+  top: 90rpx;
+  right: 50rpx;
+  font-size: 40rpx;
+  color: #cb2920;
+}
+.list_body_on{
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #cb2920;
+  color: #cb2920;
+  
+}
+.status_1{
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  font-size: 30rpx;
+  color: #b2b2b2;
+  border: 1rpx solid #ddd;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+.status_2{
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  font-size: 30rpx;
+  color: #cb2920;
+  border: 1rpx solid #cb2920;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+.status_3{
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  font-size: 30rpx;
+  color: #1a952c;
+  border: 1rpx solid #1a952c;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}

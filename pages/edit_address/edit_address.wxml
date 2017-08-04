@@ -1,11 +1,11 @@
 <!--pages/new_address/new_address.wxml-->
 <view class="new_name">
   <text class="name_text">收货人:</text>
-  <input class="name_input" bindblur="namePut" placeholder="" />
+  <input class="name_input" bindblur="namePut" placeholder="" value="{{consignee}}" />
 </view>
 <view class="new_name">
   <text class="name_text">联系方式:</text>
-  <input class="way_input" bindblur="telPut" placeholder="" />
+  <input class="way_input" bindblur="telPut" placeholder="" value="{{phone}}" />
 </view>
 <view class="new_name">
   <text class="name_text">所在地区:</text>
@@ -14,7 +14,7 @@
 
 <view class="new_name">
   <text class="name_text">详细地址:</text>
-  <input class="way_input" bindblur="wayPut" placeholder="街道，楼牌号等" />
+  <input class="way_input" bindblur="wayPut" placeholder="" value="{{street}}"/>
 
 </view>
 

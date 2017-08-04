@@ -1,14 +1,84 @@
-/* pages/coupon/coupon.wxss */
-page{
-  background: #f2f2f2;
-}
-.coupon_head{
+/* pages/index_coupon/index_coupon.wxss */
+
+.rec_nav {
   background: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  overflow: hidden;
 }
-.coupon_list{
-  width: 20%;
-  display: inline-block;
-  margin: 20rpx 51rpx;
-  font-size: 30rpx;
+
+.rec_list {
+  width: 33%;
   text-align: center;
+  float: left;
+  font-size: 30rpx;
 }
+
+.rec_list_mid {
+  width: 33%;
+  text-align: center;
+  border-left: 1rpx solid #ddd;
+  border-right: 1rpx solid #ddd;
+  float: left;
+  font-size: 30rpx;
+}
+
+.list_img {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.cou_list {
+  background: #fff;
+  border-radius: 10rpx;
+  width: 95%;
+  margin: 20rpx auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.list_left {
+  float: left;
+  width: 70%;
+}
+
+.list_prize{
+    font-size:30rpx;
+    display: block;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}
+.list_time{
+    display: block;
+    color: #aaaaaa;
+    font-size: 30rpx;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}
+.list_limit{
+    display: block;
+
+    font-size: 30rpx;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+    font-weight: bold;
+}
+.cou_list_img{
+    width: 200rpx;
+    height: 200rpx;
+    display: block;
+    position: relative;
+    left: 20rpx;
+}
+.list_num{
+    position: absolute;
+    right: 50rpx;
+    color: #fff;
+    top: 70rpx;
+    font-size: 40rpx;
+
+}
+.on{
+  color: #cb2920
+}
+

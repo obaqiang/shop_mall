@@ -10,8 +10,10 @@
 <view class="info_area">
   <image src="http://img.bdvip.net/wxsmprogram/30px_18px_huiyuanka.png"></image>
   <text class="info_area_text">会员卡</text>
-  <button wx:if="{{hascard==false}}" class="btn_get">领取</button>
-  <text wx:if="{{hascard==true}}" class="see_card">查看</text>
+  <button wx:if="{{hascard==false&&hasgetcard==false}}" bindtap="getCardact" class="btn_get">领取</button>
+  <text wx:if="{{hascard==true&&hasgetcard==true}}" bindtap="seeCard" class="see_card">查看</text>
+  <text wx:if="{{hasgetcard==false&&hascard==true}}" bindtap="activeCard" class="see_card">激活</text>
+
 </view>
 
 
@@ -36,14 +38,27 @@
 
 
 <view class="card_list list_head" bindtap="cardJump">
-  <text class="list_de">会员卡详情</text>
-  <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
+  <text class="list_de">余额</text>
+  <text class="list_num">￥{{balance_money}}</text>
 </view>
-<view class="card_list " bindtap="seeCodeJump">
-  <text class="list_de">我的二维码</text>
+<view class="card_list list_head" bindtap="cardJump">
+  <text class="list_de">红包</text>
+  <text class="list_num">￥0.00</text>
+</view>
+<view class="card_list list_head" bindtap="cardJump">
+  <text class="list_de">积分</text>
+  <text class="list_num">￥{{point}}</text>
+</view>
+<view class="card_list " bindtap="couponJump">
+  <text class="list_de">优惠券</text>
   <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
 </view>
 <!--<view class="card_list ">
   <text class="list_de">试用门店</text>
   <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
 </view>-->
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+</view>

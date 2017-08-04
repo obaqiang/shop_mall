@@ -56,7 +56,7 @@ page{
 }
 .no_goods_img{
   width:40%;
-  margin-top: 100rpx;
+  margin-top: 70rpx;
   margin-left: 60rpx;
 }
 .text_1{

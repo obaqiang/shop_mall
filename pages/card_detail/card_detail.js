@@ -1,40 +1,42 @@
-// pages/order_detail/order_detail.js
+// pages/card_detail/card_detail.js
 var app = getApp();
 var util = require('../../utils/util.js');
-var wxbarcode = require('../../utils/index.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    code: '1234567890123456789',
-    hidden:false,
-    orderitems:[]
+    descrition: '',
+    opentime: '',
+    preprogative: '',
+    storetel: ''
   },
 
-  GetOrderItemsByOrderID: function (orderid) {
+
+  GetCardDetails: function (storeid) {
     var that = this;
     wx.request({
-      url: app.globalData.bd_url + '/api/WxSP/GetOrderItemsByOrderID',
+      url: app.globalData.bd_url + '/api/WxSP/GetCardDetails',
       data: {
-        orderid: orderid,
+        storeid: storeid,
       },
       method: 'GET',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log('GetOrderItemsByOrderID返回数据');
-        console.log(res);
+        console.log(res)
         that.setData({
-          orderitems: res.data.Data.OrderItems,
-          send_no: res.data.Data.send_no,
-          hidden:true
+          descrition: res.data.Data.descrition,
+          opentime: res.data.Data.opentime,
+          prerogative: res.data.Data.prerogative,
+          storetel: res.data.Data.storetel,
         })
       },
       fail: function (res) {
-        console.log('提交GetOrderItemsByOrderID接口返回失败');
+        console.log('提交GetCardDetails接口返回失败');
+
       }
     })
   },
@@ -45,17 +47,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wxbarcode.barcode('barcode', '1234567890123456789', 680, 200);
-    wxbarcode.qrcode('qrcode', '1234567890123456789', 420, 420);
     var that = this
-    that.GetOrderItemsByOrderID(options.order_id)
+    that.GetCardDetails(app.globalData.storeid)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

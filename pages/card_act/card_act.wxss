@@ -1,0 +1,77 @@
+
+
+page {
+  background: #f0f0f2;
+}
+
+.mem_area {
+  background: #fff;
+  border-radius: 10rpx;
+  width: 90%;
+  margin: 20rpx auto;
+  display: block;
+  padding: 20rpx;
+}
+
+.mem_title {
+  display: block;
+  border-bottom: 1rpx solid #ddd;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+
+.info_area {
+  border-bottom: 1rpx solid #ddd;
+  line-height: 100rpx;
+  position: relative;
+  font-size: 30rpx;
+}
+
+.info_area input {
+  display: inline-block;
+  line-height: 100rpx;
+  position: absolute;
+  top: 25rpx;
+  left: 150rpx;
+}
+
+.type_area {
+
+  line-height: 100rpx;
+  position: relative;
+  font-size: 30rpx;
+}
+
+.type_area input {
+  display: inline-block;
+  line-height: 100rpx;
+  position: absolute;
+  top: 25rpx;
+  left: 240rpx;
+  font-size: 30rpx;
+}
+.card{
+  margin-left: 100rpx;
+}
+.btn_sure{
+  background: #04BE02;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+.btn_ver{
+  position: absolute;
+  background: #04BE02;
+  color: #fff;
+  top: 10rpx;
+  right: 0;
+  font-size: 30rpx;
+
+}
+.btn_ver_hover{
+  background: #ddd;
+  position: absolute;
+  color: #fff;
+  top: 10rpx;
+  right: 0;
+  font-size: 30rpx;
+}

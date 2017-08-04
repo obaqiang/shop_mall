@@ -37,158 +37,279 @@ page {
   width: 300rpx;
   font-size: 30rpx;
 }
-.adress_alert{
+
+.adress_alert {
   font-size: 30rpx;
   position: absolute;
   top: 80rpx;
   left: 100rpx;
 }
-.logo_img{
+
+.user_show {
+  position: absolute;
+  font-size: 30rpx;
+  top: 20rpx;
+  left: 100rpx;
+}
+
+.adress_show {
+  font-size: 30rpx;
+  position: absolute;
+  top: 80rpx;
+  left: 100rpx;
+}
+
+.logo_img {
   width: 50rpx;
   height: 50rpx;
   position: relative;
   top: 10rpx;
   left: 20rpx;
 }
-.goods_area{
+
+.goods_area {
   margin-top: 20rpx;
-  background:#fff;
+  background: #fff;
 }
-.shop_name{
-  font-size:30rpx;
+
+.shop_name {
+  font-size: 30rpx;
   margin-left: 60rpx;
   line-height: 100rpx;
 }
-.goods_img{
+
+.goods_img {
   width: 180rpx;
   height: 170rpx;
   position: absolute;
   top: 20rpx;
   left: 20rpx;
 }
-.goods_list{
+
+.goods_list {
   position: relative;
   height: 200rpx;
   background: #f2f2f2;
   margin-top: 20rpx;
 }
-.goods_desc{
+
+.goods_desc {
   font-size: 30rpx;
   position: absolute;
   top: 20rpx;
   left: 230rpx;
   width: 500rpx;
 }
-.goods_express{
+
+.goods_express {
   font-size: 25rpx;
   position: absolute;
   top: 100rpx;
   left: 230rpx;
 }
-.goods_price{
+
+.goods_price {
   position: absolute;
   top: 140rpx;
   left: 230rpx;
 }
-.goods_num{
+
+.goods_num {
   position: absolute;
   right: 40rpx;
   top: 150rpx;
   font-size: 30rpx;
 }
-.info_area{
+
+.info_area {
   background: #fff;
   border-bottom: 1rpx solid #ddd;
 }
-.area_1{
+
+.area_1 {
   overflow: hidden;
   font-size: 30rpx;
   line-height: 70rpx;
-  color: #999999;
+  color: #999;
 }
-.area_left{
+
+.area_left {
   float: left;
   margin-left: 20rpx;
-
 }
-.area_right{
+
+.area_right {
   float: right;
   margin-right: 20rpx;
-
 }
-.money_area{
+
+.money_area {
   background: #fff;
   overflow: hidden;
   font-size: 35rpx;
   line-height: 70rpx;
 }
-.money_left{
+
+.money_left {
   float: left;
   margin-left: 20rpx;
 }
-.money_right{
+
+.money_right {
   float: right;
   margin-right: 20rpx;
   color: #cb2920;
 }
-.pay_way{
+
+.pay_way {
   overflow: hidden;
   background: #fff;
   font-size: 30rpx;
   margin-top: 30rpx;
   line-height: 80rpx;
 }
-.pay_image{
+
+.pay_image {
   width: 20rpx;
   height: 30rpx;
   float: right;
   margin-right: 20rpx;
   margin-top: 20rpx;
 }
-.pay_text{
+
+.pay_text {
   float: left;
   margin-left: 20rpx;
 }
-.confirm_bottom{
+
+.confirm_bottom {
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
-  background: #fff;
+  background: #f2f2f2;
+  height: 100rpx;
+  line-height: 100rpx;
 }
-.bottom_1{
+
+.bottom_1 {
   font-size: 30rpx;
+  padding-left: 20rpx;
 }
-.bottom_2{
+
+.bottom_2 {
   font-size: 40rpx;
+  color: #cb2920;
 }
-.bottom_3{
+
+.bottom_3 {
   font-size: 40rpx;
   float: right;
-
+  width: 30%;
+  text-align: center;
+  background: #cb2920;
+  color: #fff;
 }
-.coupon_image{
+
+.bottom_3_no {
+  font-size: 40rpx;
+  float: right;
+  width: 30%;
+  text-align: center;
+  background: #dedfe0;
+  color: #fff;
+}
+
+.coupon_image {
   width: 50rpx;
   height: 50rpx;
   position: absolute;
   top: 20rpx;
   left: 20rpx;
 }
-.coupon_text{
+
+.coupon_text {
   font-size: 30rpx;
   position: absolute;
   top: 20rpx;
   left: 100rpx;
 }
-.coupon_price{
+
+.coupon_price {
   font-size: 30rpx;
   position: absolute;
   top: 25rpx;
   right: 20rpx;
 }
-.coupon_area{
+
+.coupon_area {
   background: #fff;
 }
-.coupon_list{
+
+.coupon_list {
   position: relative;
   height: 100rpx;
 }
+
+.pay_way_cho {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #fff;
+  z-index: 2;
+}
+
+.pay_way_cho_text {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 35rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.pay_wx {
+  font-size: 30rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+  position: relative;
+}
+
+.pay_wx_img {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 22rpx;
+}
+
+.pay_wx_text {
+  margin-left: 90rpx;
+}
+
+.ok_img {
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+}
+
+.pay_mask {
+  background: #000;
+  opacity: 0.2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+/* .co_img{
+
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 50%;
+} */

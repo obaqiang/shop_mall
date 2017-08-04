@@ -7,6 +7,7 @@ App({
     wx.setStorageSync('logs', logs)
   },
 
+
   getUserInfo: function(cb) {
     var that = this
     if (this.globalData.userInfo) {
@@ -24,6 +25,13 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    storeid: 713,
+
+    bd_url: 'https://testapi.ks12580.net',
+    loginfo:'',
+    token: '',
+    goods_cho_all:[],
+    goods_cho:[]
   }
 })

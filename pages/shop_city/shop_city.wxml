@@ -1,55 +1,26 @@
 <!--pages/shop_city/shop_city.wxml-->
-<view class="search_area">
-  <image class="search_img" src="../../image/32px_32px_Q.png"></image>
-  <input class="search_in" placeholder="搜索商品名称" />
+<view class="search_area" >
+  <image class="search_img" src="http://testimg.bdvip.net/smallprogram/32px_32px_Q.png"></image>
+  <input class="search_in" name="search" placeholder="搜索商品名称" bindconfirm="searchGoods"/>
 </view>
 <view class="city_left">
-  <view class="city_goods">全部</view>
-  <view class="city_goods">生日蛋糕</view>
-  <view class="city_goods">奶茶类</view>
-  <view class="city_goods">小吃零食</view>
-  <view class="city_goods">下午茶套餐</view>
-  <view class="city_goods">全部</view>
-  <view class="city_goods">生日蛋糕</view>
-  <view class="city_goods">奶茶类</view>
-  <view class="city_goods">小吃零食</view>
-  <view class="city_goods">下午茶套餐</view>
+  <view class="city_goods" bindtap="classCho" wx:for="{{classlistdata}}" data-classid="{{item.id}}">
+    {{item.class_name}}
+  </view>
+
 </view>
 <view class="city_right">
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
+  <view class="goods_list" bindtap="deJump"  wx:for="{{goodsdata}}" wx:if="{{choose_id==item.class_id}}" data-goods_id="{{item.id}}">
+    <image class="goods_img" src="{{item.thumb}}"></image>
+    <text class="goods_desc">{{item.goods_name}}</text>
+    <text class="info_tip" wx:if="{{item.is_locale==0}}">快递发货</text>
+    <text class="info_tip" wx:if="{{item.is_locale==1}}">到店领取</text>
+    <text class="goods_prize">￥{{item.goods_price}}</text>
   </view>
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
-  </view>
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
-  </view>
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
-  </view>
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
-  </view>
-  <view class="goods_list">
-    <image class="goods_img" src="../../image/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">超级无敌好吃的慕斯小蛋糕，保证你吃了一</text>
-    <text class="info_tip">快递/到店</text>
-    <text class="goods_prize">￥9.9</text>
-  </view>
+</view>
+
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
 </view>

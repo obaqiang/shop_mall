@@ -1,38 +1,46 @@
 <!--pages/address/address.wxml-->
-<view class="address_area">
-  <view class="address_list">
+<view class="address_area" wx:if="{{no_address==false}}">
+  <!-- <view class="address_list">
     <text class="address_name">拉拉</text>
     <text class="address_tel">13032115858</text>
     <text class="address_more">江苏省昆山shi巴啦啦啊是独立空间h</text>
     <view class="cho_area">
       <text class="cho_img"></text>
       <text class="cho_mo">设为默认</text>
-      <image class="edit_img" src="../../image/36px_36px_bianji.png"></image>
+      <image class="edit_img" src="http://testimg.bdvip.net/smallprogram/36px_36px_bianji.png"></image>
       <text class="edit_text">编辑</text>
-      <image class="del_img" src="../../image/36px_36px_shanchu.png"></image>
+      <image class="del_img" src="http://testimg.bdvip.net/smallprogram/36px_36px_shanchu.png"></image>
       <text class="del_text">删除</text>
     </view>
 
-  </view>
-  <view class="address_list">
-    <text class="address_name">拉拉</text>
-    <text class="address_tel">13032115858</text>
-    <text class="address_more">江苏省昆山shi巴啦啦啊是独立空间h</text>
+  </view> -->
+  <view class="address_list" wx:for="{{addressList}}">
+    <text class="address_name">{{item.consignee}}</text>
+    <text class="address_tel">{{item.phone}}</text>
+    <text class="address_more">{{item.province}}{{tiem.city}}{{item.area}}{{item.street}}</text>
     <view class="cho_area">
-
-      <image class="cho_img_hook" src="../../image/32px_32px_V.png"></image>
-      <text class="cho_mo">设为默认</text>
-      <image class="edit_img" src="../../image/36px_36px_bianji.png"></image>
-      <text class="edit_text">编辑</text>
-      <image class="del_img" src="../../image/36px_36px_shanchu.png"></image>
-      <text class="del_text">删除</text>
+      <text class="cho_img" wx:if="{{item.defaultAddress==0}}"></text>
+      <image class="cho_img_hook" wx:if="{{item.defaultAddress==1}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
+      <text class="cho_mo" data-id="{{item.id}}" bindtap="setDefault">设为默认</text>
+      <image class="edit_img" data-id="{{item.id}}" bindtap="editAddr" src="http://testimg.bdvip.net/smallprogram/36px_36px_bianji.png"></image>
+      <text class="edit_text" data-id="{{item.id}}" bindtap="editAddr">编辑</text>
+      <image class="del_img" data-id="{{item.id}}" bindtap="delAddr" src="http://testimg.bdvip.net/smallprogram/36px_36px_shanchu.png"></image>
+      <text class="del_text" data-id="{{item.id}}" bindtap="delAddr">删除</text>
     </view>
 
   </view>
 </view>
 
 
-<view class="no_address">
-  <image class="no_address_img" src="../../image/294px_256px_dizhi.png"></image>
+<view class="no_address" wx:if="{{no_address==true}}">
+  <image class="no_address_img" src="http://testimg.bdvip.net/smallprogram/294px_256px_dizhi.png"></image>
   <text class="address_alert">您还没有收货地址哦~</text>
+</view>
+
+<view class="new_address" bindtap="newJump" >新建地址</view>
+
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
 </view>

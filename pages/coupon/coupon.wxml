@@ -1,8 +1,33 @@
-<!--pages/coupon/coupon.wxml-->
-<view class="coupon_head">
-  <text class="coupon_list">待使用</text>
-  <text class="coupon_list">已过期</text>
-  <text class="coupon_list">已使用</text>
+<!--pages/index_coupon/index_coupon.wxml-->
+<view class="rec_nav">
+  <view class="rec_list" bindtap="oneTap">
+    <image class="list_img" src="../../img/34px_34px_icon1.png"></image>
+    <text class="{{titleshow == 'one' ? 'on':''}}">未使用</text>
+  </view>
+  <view class="rec_list_mid" bindtap="twoTap">
+    <image class="list_img" src="../../img/34px_34px_icon2.png"></image>
+    <text class="{{titleshow == 'two' ? 'on':''}}">已使用</text>
+  </view>
+  <view class="rec_list" bindtap="threeTap">
+    <image class="list_img" src="../../img/34px_34px_icon3.png"></image>
+    <text class="{{titleshow == 'three' ? 'on':''}}">已失效</text>
+  </view>
 </view>
-
-<view class="coupon_area"></view>
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" style="height: {{scrollHeight}}px" bindscrolltolower="loadMore" bindscrolltoupper="reFresh">
+  <view class="cou_area">
+    <view class="cou_list" wx:for="{{Tickets}}" bindtap="couJump" data-ticket_id="{{item.ticket_id}}">
+      <view class="list_left">
+        <text class="list_prize">{{item.ticket_money}}</text>
+        <text class="list_time">使用期限 {{item.begin_time}}~{{item.end_time}}</text>
+        <text class="list_limit">满￥{{item.condition_money}}可用</text>
+      </view>
+      <image class="cou_list_img" src="{{type_img}}"></image>
+      <view class="list_num">￥88</view>
+    </view>
+  </view>
+  <view class="body-view">
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+      加载中...
+    </loading>
+  </view>
+</scroll-view>

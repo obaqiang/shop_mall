@@ -1,0 +1,25 @@
+<!--pages/card_detail/card_detail.wxml-->
+<view class="mem_area">
+  <view class="mem_title">会员信息</view>
+  <view class="info_area">
+    <text>特权说明:</text>
+    <!--<input type="text" placeholder="请填写手机号码" />-->
+    <text class="info_t">{{prerogative}}</text>
+  </view>
+  <view class="info_area">
+    <text>商家电话:</text>
+    <!--<input type="text" placeholder="请填写姓名" />-->
+    <text class="info_t">{{storetel}}</text>
+  </view>
+  <view class="info_area">
+    <text>营业时间:</text>
+    <!--<input type="password" placeholder="请填写密码" />-->
+    <text class="info_t">{{opentime}}</text>
+  </view>
+  <view class="type_area">
+    <text>使用须知</text>
+    <text class="info_t">{{descrition}}</text>
+  </view>
+
+  <!--<button class="btn_sure">确定</button>-->
+</view>

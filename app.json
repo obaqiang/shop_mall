@@ -1,31 +1,26 @@
 {
-  "pages":[
+  "pages": [
+
     "pages/index_home/index_home",
-    "pages/order_detail/order_detail",
-    "pages/address/address",
-    "pages/express/express",
-    
-    "pages/shop_car/shop_car",
-    "pages/shop_mine/shop_mine",
-    
-    "pages/coupon/coupon",
-    
     "pages/order_confirm/order_confirm",
-    "pages/new_address/new_address",
-    
     "pages/goods_detail/goods_detail",
-    
-    
-    
-    "pages/shop_city/shop_city"
-      
-    
-    
+    "pages/order_detail/order_detail",
+    "pages/shop_mine/shop_mine",
+    "pages/address/address",
+    "pages/edit_address/edit_address",
+    "pages/express/express",
+    "pages/shop_car/shop_car",
+    "pages/coupon/coupon",
+    "pages/new_address/new_address",
+    "pages/shop_city/shop_city",
+    "pages/card_act/card_act",
+    "pages/my_order/my_order",
+    "pages/card_detail/card_detail"
   ],
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "#cb2920",
-    "borderStyle": "white",
+    "borderStyle": "f7f7fa",
     "list": [
       {
         "selectedIconPath": "image/42px_42px_shouye1.png",
@@ -53,10 +48,10 @@
       }
     ]
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

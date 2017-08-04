@@ -1,0 +1,31 @@
+<view class="mem_area">
+  <view class="mem_title">必填信息</view>
+  <view class="info_area">
+    <text>手机</text>
+    <input type="text" bindblur="inPhone" placeholder="请填写手机号码" />
+  </view>
+  <view class="info_area">
+    <text>验证码</text>
+    <input type="text" bindblur="inVer" placeholder="请填写验证码" />
+    <button bindtap="btnVer" class="{{isver == true?'btn_ver':'btn_ver_hover'}}">{{vertext}}</button>
+  </view>
+
+  <view class="info_area">
+    <text>姓名</text>
+    <input type="text" bindblur="inName" placeholder="请填写姓名" />
+  </view>
+  <view class="info_area">
+    <text>密码</text>
+    <input type="password" bindblur="inPwd" placeholder="请填写密码" />
+  </view>
+  <view class="info_area">
+    <text>确认密码</text>
+    <input type="password" bindinput="inPwdmore" placeholder="请再次填写密码" />
+  </view>
+  <!--<view class="type_area">
+    <text>会员卡类型</text>
+    <text class="card">至尊卡</text>
+  </view>-->
+
+  <button class="btn_sure" bindtap="btnAct">立即激活</button>
+</view>

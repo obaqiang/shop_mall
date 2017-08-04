@@ -18,15 +18,16 @@ Page({
     phone: '',
     street: '',
     save_status: false,
+    id:'',
     hidden:false
   },
 
-  SaveVipAddress: function (province, city, area, street, consignee, phone, open_id) {
+  SaveVipAddress: function (province, city, area, street, consignee, phone, open_id,id) {
     var that = this;
     wx.request({
       url: app.globalData.bd_url + '/api/SmallProgram/SaveVipAddress',
       data: {
-        // "id": 0,
+        id: id,
         province: province,
         city: city,
         area: area,
@@ -50,21 +51,13 @@ Page({
       },
 
       success: function (res) {
+        
         console.log(res);
-        console.log(province);
-        console.log(city);
-        console.log(area);
-        console.log(street);
-        console.log(consignee);
-        console.log(phone);
-        console.log(1);
-        console.log(open_id);
         if (res.data.Data.IsError == false) {
           wx.showToast({
             title: '地址添加成功',
           })
-
-          wx.navigateBack({
+          wx.navigateTo({
             url: '../address/address'
           })
 
@@ -75,6 +68,46 @@ Page({
       }
     })
   },
+
+  GetVipAddressList: function (open_id, id) {
+    var that = this;
+    wx.request({
+      url: app.globalData.bd_url + '/api/SmallProgram/GetVipAddressList',
+      data: {
+        union_id: open_id,
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'storeid': app.globalData.storeid,
+        'token': app.globalData.token
+      },
+
+      success: function (res) {
+        console.log(res)
+        for (var i = 0; i < res.data.Data.addressList.length; i++) {
+          if (id == res.data.Data.addressList[i].id){
+            that.setData({
+              id:id,
+              consignee: res.data.Data.addressList[i].consignee,
+              phone: res.data.Data.addressList[i].phone,
+              province: res.data.Data.addressList[i].province,
+              city: res.data.Data.addressList[i].city,
+              county: res.data.Data.addressList[i].area,
+              street: res.data.Data.addressList[i].street,
+              hidden:true
+
+            })
+          }
+        }
+
+      },
+      fail: function (res) {
+        console.log('提交GetVipAddressList接口返回失败');
+      }
+    })
+  },
+
 
   addressSave: function () {
     var that = this
@@ -93,15 +126,10 @@ Page({
         save_status: true
       })
       console.log(app.globalData.loginfo.data.Data.openid)
-      that.SaveVipAddress(that.data.province, that.data.city, that.data.county, that.data.street, that.data.consignee, that.data.phone, app.globalData.loginfo.data.Data.openid)
+      that.SaveVipAddress(that.data.province, that.data.city, that.data.county, that.data.street, that.data.consignee, that.data.phone, app.globalData.loginfo.data.Data.openid,that.data.id)
 
 
     }
-
-
-
-
-
   },
 
 
@@ -225,7 +253,7 @@ Page({
       condition: !this.data.condition
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     console.log("onLoad");
     var that = this;
 
@@ -254,12 +282,13 @@ Page({
       provinces: provinces,
       citys: citys,
       countys: countys,
-      province: cityData[0].name,
-      city: cityData[0].sub[0].name,
-      county: cityData[0].sub[0].sub[0].name,
-      hidden:true
+      // province: cityData[0].name,
+      // city: cityData[0].sub[0].name,
+      // county: cityData[0].sub[0].sub[0].name,
+
     })
-    console.log('初始化完成');
+    that.GetVipAddressList(app.globalData.loginfo.data.Data.openid, options.id)
+
 
 
   }

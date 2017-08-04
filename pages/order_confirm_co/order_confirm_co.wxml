@@ -65,7 +65,7 @@
   <text class="pay_way_cho_text">请选择支付方式</text>
   <view class="pay_wx" bindtap="weixinWay">
     <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_weixin.png"></image>
-    <text class="pay_wx_text">微信支付</text>
+    <text>微信支付</text>
     <text class="co_img" ></text>
     <image class="ok_img" wx:if="{{weixin_pay}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
   </view>

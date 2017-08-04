@@ -3,7 +3,7 @@
 .goods_price {
   color: #cb2920;
   font-size: 50rpx;
-  margin-left: 30rpx;
+  margin-left: 20rpx;
 }
 
 .goods_express {
@@ -12,7 +12,9 @@
   border: 1rpx solid #ff9205;
   border-radius: 10rpx;
   padding: 5rpx;
-  margin-left: 20rpx;
+  position: relative;
+  top: -10rpx;
+  left: 10rpx;
 }
 
 .goods_stock {
@@ -25,13 +27,14 @@
 
 .goods_name {
   color: #151515;
-  text-align: center;
+  text-align: left;
   font-size: 35rpx;
   margin-top: 20rpx;
+  padding-left: 28rpx;
 }
 
 .goods_desc {
-  width: 90%;
+  width: 91%;
   margin: 20rpx auto;
   font-size: 30rpx;
   color: #5e5f61;
@@ -43,7 +46,7 @@
 }
 
 .express_price {
-  margin-left: 30rpx;
+  margin-left: 33rpx;
 }
 
 .express_area {
@@ -68,46 +71,57 @@
   display: inline-block;
   margin: 30rpx;
 }
-.nav_bottom{
+
+.nav_bottom {
   position: fixed;
   bottom: 0;
   background: #fff;
   width: 100%;
   overflow: hidden;
 }
-.bottom_img{
+
+.bottom_img {
   width: 50rpx;
   height: 50rpx;
   position: absolute;
-  top: 20rpx;
+  top: 15rpx;
   left: 40rpx;
 }
-.bottom_name{
+
+.bottom_name {
   position: absolute;
   color: #828282;
-  top: 70rpx;
+  top: 60rpx;
   left: 30rpx;
   font-size: 25rpx;
 }
-.bottom_add{
+
+.bottom_add {
   float: right;
   background: #ff9600;
-  padding: 30rpx 50rpx;
   color: #fff;
+  width: 40%;
+  text-align: center;
+  line-height: 100rpx;
 }
-.bottom_buy{
+
+.bottom_buy {
   float: right;
   background: #e02e24;
-  padding: 30rpx 50rpx;
   color: #fff;
+  width: 40%;
+  text-align: center;
+  line-height: 100rpx;
 }
-.bottom_num{
+
+.bottom_num {
   background: #e02e24;
   border-radius: 50%;
-  font-size: 30rpx;
+  font-size: 20rpx;
   color: #fff;
-  padding: 5rpx;
+  padding: 2rpx 10rpx;
   position: absolute;
-  left: 80rpx;
-  top: 5rpx;
+  left: 79rpx;
+  top: 0rpx;
+  z-index: 10;
 }

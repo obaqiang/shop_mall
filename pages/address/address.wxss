@@ -101,6 +101,14 @@ page{
   text-align: center;
   margin-top: 30rpx;
 }
-.address_area{
-  display: none;
+
+.new_address{
+  background: #cb2920;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 35rpx;
+  line-height: 100rpx;
 }

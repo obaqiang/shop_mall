@@ -1,22 +1,22 @@
 <!--pages/goods_detail/goods_detail.wxml-->
 <swiper style="height:500rpx;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}">
-    <swiper-item >
+    <swiper-item>
       <image src="{{item}}" class="slide-image" style="width:100%;" />
     </swiper-item>
   </block>
 </swiper>
 
 <view class="info_area">
-  <text class="goods_price">￥9.9</text>
+  <text class="goods_price">￥{{goods_price}}</text>
   <text class="goods_express">快递/到店</text>
   <text class="goods_stock">10积分*已售1222件</text>
 </view>
 
-<view class="goods_name">炒鸡无敌好吃的慕斯蛋糕，吃饿了你想吐</view>
+<view class="goods_name">{{goods_name}}</view>
 
 <view class="goods_desc">
-  产品描述：前轱辘转，前轱辘转弯，后咕噜转，后咕噜转，后轱辘转完钱咕噜转
+  产品描述：{{goods_desc}}
 </view>
 
 <view class="express_info">
@@ -27,16 +27,20 @@
 <view class="img_area">
 
   <text class="img_desc">商品详情</text>
-  <image class="img_list" src="../../image/img_1.png"></image>
-  <image class="img_list" src="../../image/img_1.png"></image>
-  <image class="img_list" src="../../image/img_1.png"></image>
+  <image wx:for="{{imgUrls}}" class="img_list" src="{{item}}"></image>
+
 </view>
 
 <view class="nav_bottom">
-  <image class="bottom_img" src="../../image/40px_40px_gouwuche.png"></image>
-  <text class="bottom_name">购物车</text>
-  <text class="bottom_num">12</text>
-  <text class="bottom_buy">立即购买</text>
-  <text class="bottom_add">加入购物车</text>
+  <view class="" bindtap="carJump">
+    <image class="bottom_img" src="http://testimg.bdvip.net/smallprogram/40px_40px_gouwuche.png"></image>
+    <text class="bottom_name">购物车</text>
+  </view>
+
+  <text class="bottom_num" wx:if="{{goods_num!=0}}">{{goods_num}}</text>
+  <text class="bottom_buy" bindtap="buyJump">立即购买</text>
+  <text class="bottom_add" bindtap="plusGoods">加入购物车</text>
 
 </view>
+
+

@@ -67,7 +67,13 @@ page{
   font-size: 30rpx;
   line-height: 100rpx;
 }
-
+.list_num{
+  float: right;
+  font-size: 30rpx;
+  color: #81838e;
+  line-height: 100rpx;
+  margin-right: 30rpx;
+}
 .list_img {
   width: 20rpx;
   height: 30rpx;
@@ -113,4 +119,24 @@ page{
   color: #666;
   font-size: 30rpx;
   margin-left: 10rpx;
+}
+.btn_get{
+  background: #1aac19;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  float: right;
+  margin-top: 24rpx;
+}
+.see_card{
+  border: 1rpx solid #1aac19;
+  width: 100rpx;
+  text-align: center;
+  line-height: 50rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 25rpx;
+  border-radius: 10rpx;
+  color: #1aac19;
+  font-size: 30rpx;
 }
