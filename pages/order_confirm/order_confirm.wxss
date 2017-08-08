@@ -313,3 +313,17 @@ page {
   border: 1rpx solid #ddd;
   border-radius: 50%;
 } */
+.complex{
+  overflow: hidden;
+  background: #fff;
+  font-size: 30rpx;
+  border-top: 1rpx solid #ddd;
+  line-height: 80rpx;
+}
+.complex_1{
+  margin-left: 20rpx;
+}
+.complex_2{
+  float: right;
+  margin-right: 20rpx;
+}

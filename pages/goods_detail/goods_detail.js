@@ -19,7 +19,9 @@ Page({
     goods_num: 0,
     goods_array: [],
     total_money: '',
-    if_has_goods:false
+    if_has_goods:false,
+    sell_goods:'',
+    goods_integral:''
   },
 
   carJump: function () {
@@ -45,6 +47,7 @@ Page({
         'token': app.globalData.token
       },
       success: function (res) {
+        console.log('GetGoodsInfo接口开始')
         console.log(res);
         var GoodsImgList = res.data.Data.GoodsImgList;
         var img_array = [];
@@ -60,7 +63,8 @@ Page({
           goods_name: res.data.Data.Goods.goods_name,
           goods_desc: res.data.Data.Goods.goods_desc,
           is_locale: res.data.Data.Goods.is_locale,
-
+          sell_goods: res.data.Data.Goods.sell_goods,
+          goods_integral: res.data.Data.Goods.goods_integral
         })
 
       },
@@ -111,9 +115,10 @@ Page({
         console.log(res);
 
         if (res.data.Data.IsError == false) {
-          var total_price = that.data.goods_num * that.data.goods_price
+          // var total_price = that.data.goods_num * that.data.goods_price
+          console.log('这里需要的order_id:' + res.data.Data.OrderID)
           wx.navigateTo({
-            url: '../order_confirm/order_confirm?order_id=' + res.data.Data.OrderID + '&goods_price=' + that.data.goods_price + '&goods_goods_name=' + that.data.goods_name + '&goods_desc=' + that.data.goods_desc + '&goods_id=' + that.data.goods_id + '&goods_num=' + that.data.goods_num + '&goods_img=' + that.data.imgUrls[0] + '&total_price=' + total_price
+            url: '../order_confirm/order_confirm?order_id=' + res.data.Data.OrderID
           })
         }
         // wx.navigateTo({

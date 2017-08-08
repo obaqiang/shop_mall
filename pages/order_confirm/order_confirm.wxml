@@ -8,16 +8,16 @@
   <image class="address_right" src="http://testimg.bdvip.net/smallprogram/17px_30px_la.png"></image>
 </view>
 <view class="goods_area">
-  <view class="list_head">
+  <!-- <view class="list_head">
     <image class="logo_img" src="http://testimg.bdvip.net/smallprogram/44px_logo.png"></image>
     <text class="shop_name">麦田香草</text>
-  </view>
-  <view class="goods_list" data-goods_id="{{goods_id}}">
-    <image class="goods_img" src="{{goods_img}}"></image>
-    <text class="goods_desc">{{goods_name}}</text>
+  </view> -->
+  <view class="goods_list" wx:for="{{order_items}}" >
+    <image class="goods_img" src="{{item.thumb}}"></image>
+    <text class="goods_desc">{{item.goods_name}}</text>
     <text class="goods_express">快递发货</text>
-    <text class="goods_price">￥{{goods_price}}</text>
-    <text class="goods_num">x{{goods_num}}</text>
+    <text class="goods_price">￥{{item.real_price}}</text>
+    <text class="goods_num">x{{item.qty}}</text>
   </view>
   <!-- <view class="goods_list">
     <image class="goods_img" src="http://testimg.bdvip.net/smallprogram/164px_164px_naquhai.png"></image>
@@ -53,6 +53,18 @@
   <text class="pay_text">付款方式</text>
   <image class="pay_image" src="http://testimg.bdvip.net/smallprogram/17px_30px_la.png"></image>
 </view>
+<view class="complex">
+  <text class="complex_1">红包</text>
+  <text class="complex_2">￥10.00</text>
+</view>
+<view class="complex">
+  <text class="complex_1">优惠券</text>
+  <text class="complex_2">￥10.00</text>
+</view>
+<view class="complex">
+  <text class="complex_1">可用积分(10积分=1元)</text>
+  <text class="complex_2">100</text>
+</view>
 
 <view class="confirm_bottom">
   <text class="bottom_1">实付金额:</text>
@@ -68,6 +80,12 @@
     <text class="pay_wx_text">微信支付</text>
     <text class="co_img" ></text>
     <image class="ok_img" wx:if="{{weixin_pay}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
+  </view>
+  <view class="pay_wx" bindtap="weixinWay">
+    <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_BD.png"></image>
+    <text class="pay_wx_text">BD卡支付</text>
+    <text class="co_img" ></text>
+    <image class="ok_img" wx:if="{{weixin_pay==false}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
   </view>
   <!-- <view class="pay_wx">
     <image class="pay_bd_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_BD.png"></image>

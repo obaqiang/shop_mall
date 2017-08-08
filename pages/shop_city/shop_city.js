@@ -18,18 +18,18 @@ Page({
     choose_id: ''
   },
 
-  GetGoods: function (GoodsName) {
+  GetGoods: function (GoodsName, class_id) {
     var that = this;
     wx.request({
       url: app.globalData.bd_url + '/api/SmallProgram/GetGoods',
       data: {
         store_id: app.globalData.storeid,
-        class_id: 0,
+        class_id: class_id,
         GoodsName: GoodsName,
         PageIndex: 1,
         PageSize: 1000,
         isSearchGoodsByUid: 1,
-        token: app.globalData.token
+        type: 1
       },
       method: 'POST',
       header: {
@@ -38,57 +38,11 @@ Page({
       },
 
       success: function (res) {
+        console.log('GetGoods接口开始');
         console.log(res);
-
-
-      },
-      fail: function (res) {
-        console.log('提交GetAllGoods接口返回失败');
-      }
-    })
-  },
-
-
-
-
-  GetAllGoods: function (storeid) {
-    var that = this;
-    wx.request({
-      url: app.globalData.bd_url + '/api/Goods/GetAllGoods',
-      data: {
-        // orderid: orderid,
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-        'storeid': app.globalData.storeid,
-        'token': app.globalData.token
-      },
-
-      success: function (res) {
-        console.log(res);
-        var classlistArray = []
-        var goodsArray = []
-        for (var i = 0; i < res.data.Data.ClassList.length; i++) {
-          var classlist = {}
-          classlist.class_name = res.data.Data.ClassList[i].class_name
-          classlist.id = res.data.Data.ClassList[i].id
-          classlistArray.push(classlist)
-
-
-          for (var j = 0; j < res.data.Data.ClassList[i].GoodsList.length; j++) {
-            res.data.Data.ClassList[i].GoodsList[j].num = 0
-            goodsArray.push(res.data.Data.ClassList[i].GoodsList[j])
-          }
-        }
-        // console.log(1)
-        // console.log(classlistArray);
-        // console.log(goodsArray)
         that.setData({
-          classlistdata: classlistArray,
-          goodsdata: goodsArray,
-          choose_id: res.data.Data.ClassList[0].id,
-          hidden: true
+          goodsdata: res.data.Data.GoodsList,
+          hidden:true
         })
 
       },
@@ -97,6 +51,91 @@ Page({
       }
     })
   },
+
+  GetClassList: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.bd_url + '/api/Goods/GetClassList',
+      data: {
+
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'token': app.globalData.token
+      },
+
+      success: function (res) {
+        console.log('GetClassList接口开始');
+        console.log(res);
+        that.GetGoods('', res.data.Data.ClassList[0].id)
+        var classlistArray = []
+        for (var i = 0; i < res.data.Data.ClassList.length; i++) {
+          var classlist = {}
+          classlist.class_name = res.data.Data.ClassList[i].class_name
+          classlist.id = res.data.Data.ClassList[i].id
+          classlistArray.push(classlist)
+        }
+        that.setData({
+          classlistdata: classlistArray
+        })
+
+      },
+      fail: function (res) {
+
+      }
+    })
+  },
+
+
+  // GetAllGoods: function (storeid) {
+  //   var that = this;
+  //   wx.request({
+  //     url: app.globalData.bd_url + '/api/Goods/GetAllGoods',
+  //     data: {
+  //       // orderid: orderid,
+  //     },
+  //     method: 'GET',
+  //     header: {
+  //       'content-type': 'application/json',
+  //       'storeid': app.globalData.storeid,
+  //       'token': app.globalData.token
+  //     },
+
+  //     success: function (res) {
+  //       console.log(111)
+  //       console.log('GetAllGoods接口开始')
+  //       console.log(res);
+  //       var classlistArray = []
+  //       var goodsArray = []
+  //       for (var i = 0; i < res.data.Data.ClassList.length; i++) {
+  //         var classlist = {}
+  //         classlist.class_name = res.data.Data.ClassList[i].class_name
+  //         classlist.id = res.data.Data.ClassList[i].id
+  //         classlistArray.push(classlist)
+
+
+  //         for (var j = 0; j < res.data.Data.ClassList[i].GoodsList.length; j++) {
+  //           res.data.Data.ClassList[i].GoodsList[j].num = 0
+  //           goodsArray.push(res.data.Data.ClassList[i].GoodsList[j])
+  //         }
+  //       }
+  //       // console.log(1)
+  //       // console.log(classlistArray);
+  //       // console.log(goodsArray)
+  //       that.setData({
+  //         classlistdata: classlistArray,
+  //         goodsdata: goodsArray,
+  //         choose_id: res.data.Data.ClassList[0].id,
+  //         hidden: true
+  //       })
+
+  //     },
+  //     fail: function (res) {
+  //       console.log('提交GetAllGoods接口返回失败');
+  //     }
+  //   })
+  // },
 
 
 
@@ -120,10 +159,8 @@ Page({
     var that = this;
     console.log(e);
     var classid = e.currentTarget.dataset.classid;
-    that.setData({
-      choose_id: classid
-    });
-
+    
+    that.GetGoods('', classid)
   },
 
 
@@ -150,7 +187,8 @@ Page({
     console.log(11111)
     var that = this
     if (app.globalData.loginfo != '') {
-      that.GetAllGoods(app.globalData.storeid);
+      // that.GetAllGoods(app.globalData.storeid);
+      that.GetClassList()
     } else {
       wx.showToast({
         title: '页面加载中，请稍等',

@@ -10,7 +10,7 @@
 <view class="info_area">
   <text class="goods_price">￥{{goods_price}}</text>
   <text class="goods_express">快递/到店</text>
-  <text class="goods_stock">10积分*已售1222件</text>
+  <text class="goods_stock">10积分*已售{{sell_goods}}件</text>
 </view>
 
 <view class="goods_name">{{goods_name}}</view>

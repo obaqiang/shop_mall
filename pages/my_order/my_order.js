@@ -30,36 +30,46 @@ Page({
     var that = this
     var orderstatus = e.target.dataset.orderstatus;
     var type;
+    var pay_status = 0;
+    var status = 0;
     if (orderstatus == 1) {
       type = 0
-    } else if (orderstatus == 2) {
-      type = 7
-    } else if (orderstatus == 3) {
+    } else if (orderstatus == 2) {//待付款
       type = 5
-    } else if (orderstatus == 4) {
+      pay_status = 1
+      status = 2
+    } else if (orderstatus == 3) {//未完成
+      type = 2
+      pay_status = 1
+      status = 1
+    } else if (orderstatus == 4) {//已完成
       type = 6
+      pay_status = 2
+      status = 2
     }
     that.setData({
       type: type
     })
-    that.GetOrders(app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, that.data.type, app.globalData.loginfo.data.Data.bdtoken, 1, 1000)
+    that.GetOrdersForSmallProgram(app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, that.data.type, app.globalData.loginfo.data.Data.bdtoken, pay_status, status)
   },
 
 
 
 
-  GetOrders: function (store_id, vip_id, type, token, page_num, page_size) {
+  GetOrdersForSmallProgram: function (store_id, vip_id, type, token, pay_status, status) {
     var that = this;
     wx.request({
-      url: app.globalData.bd_url + '/api/order/GetOrders',
+      url: app.globalData.bd_url + '/api/OrderV2/GetOrdersForSmallProgram',
       data: {
         store_id: store_id,
         vip_id: vip_id,
         type: type,
+        pay_status: pay_status,
+        status: status
         // hasitems:1,
         // token:token,
-        page_num: page_num,
-        page_size: page_size,
+        // page_num: page_num,
+        // page_size: page_size,
 
       },
       method: 'GET',
@@ -70,6 +80,7 @@ Page({
       },
 
       success: function (res) {
+        console.log('GetOrdersForSmallProgram接口开始');
         console.log(res);
         var orders = res.data.Data.Orders
         var orders_new = [];
@@ -77,20 +88,20 @@ Page({
           var add_time = orders[i].add_time;
           add_time = util.getNowFormatDate_2(add_time);
           orders[i].add_time = add_time
-          var status = orders[i].add_time;
+          var status = orders[i].status;
           var pay_status = orders[i].pay_status;
           var send_status = orders[i].send_status;
           var text;
           var text_status;
-          if (orders[i].status == 2 && orders[i].pay_status == 1 && orders[i].send_status == 0) {
+          if (orders[i].pay_status == 1 && orders[i].send_status == 0) {
 
             text = '待付款';
             text_status = 'status_2';
-          } else if (orders[i].status == 2 && orders[i].pay_status == 2 && orders[i].send_status == 0) {
+          } else if (orders[i].pay_status == 2 && orders[i].send_status == 0) {
 
             text = '未完成';
             text_status = 'status_3'
-          } else if (orders[i].status == 2 && orders[i].pay_status == 2 && orders[i].send_status == 1) {
+          } else if (orders[i].pay_status == 2 && orders[i].send_status == 1) {
 
             text = '已完成';
             text_status = 'status_1'
@@ -127,20 +138,28 @@ Page({
     if (type == '') {
       type = 0
     }
-    var status = options.status
-    if (status == 'one') {//考虑页面是从order_card页面跳转过来
-      type = 0;
-    } else if (status == 'two') {
+    var co_status = options.status
+    var pay_status = 0;
+    var status = 0;
+    if (co_status == 'one') {//考虑页面是从order_card页面跳转过来
+      type = 0
+    } else if (co_status == 'two') {
       type = 7;
-    } else if (status == 'three') {
+      pay_status = 1
+      status = 2
+    } else if (co_status == 'three') {
       type = 5;
-    } else if (status == 'four') {
+      pay_status = 1
+      status = 1
+    } else if (co_status == 'four') {
       type = 6;
+      pay_status = 2
+      status = 2
     }
     that.setData({
       type: type
     })
-    that.GetOrders(app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, that.data.type, app.globalData.loginfo.data.Data.bdtoken, 1, 1000)
+    that.GetOrdersForSmallProgram(app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, that.data.type, app.globalData.loginfo.data.Data.bdtoken, pay_status, status)
 
   },
 

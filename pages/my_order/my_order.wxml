@@ -1,8 +1,8 @@
 <!--pages/my_order/my_order.wxml-->
 <view class="list_head">
   <text class="{{type==0?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="1">全部订单</text>
-  <text class="{{type==7?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="2">待付款</text>
-  <text class="{{type==5?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="3">未完成</text>
+  <text class="{{type==5?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="2">待付款</text>
+  <text class="{{type==2?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="3">未完成</text>
   <text class="{{type==6?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="4">已完成</text>
 </view>
 

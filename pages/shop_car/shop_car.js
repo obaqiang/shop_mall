@@ -107,9 +107,9 @@ Page({
         } else {
           co_goods_cho_all.splice(i, 1)
         }
-
       }
     }
+
     that.setData({
       goods_cho_all: co_goods_cho_all
     })
@@ -136,20 +136,27 @@ Page({
 
   goPay: function () {
     var that = this
-    var items_json = []
-    for (var i = 0; i < that.data.goods_pay.length; i++) {
-      var items = {
-        goods_id: that.data.goods_pay[i].id,
-        order_id: '',
-        price: that.data.goods_pay[i].goods_price,
-        qty: that.data.goods_pay[i].goods_num
+    if (that.data.total_money == 0) {
+      wx.showToast({
+        title: '请勾选需要的商品',
+      })
+    } else {
+      var items_json = []
+      for (var i = 0; i < that.data.goods_pay.length; i++) {
+        var items = {
+          goods_id: that.data.goods_pay[i].goods_id,
+          order_id: '',
+          price: that.data.goods_pay[i].goods_price,
+          qty: that.data.goods_pay[i].goods_num
+        }
+        items_json.push(items);
       }
-      items_json.push(items);
-    }
-    items_json = JSON.stringify(items_json);
+      items_json = JSON.stringify(items_json);
 
-    that.CreateOrder('', app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, '', that.data.total_money, that.data.total_money, that.data.total_money, 0, '111', '', items_json)
-    // that.CreateWeixinOrder();
+      that.CreateOrder('', app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, '', that.data.total_money, that.data.total_money, that.data.total_money, 0, '111', '', items_json)
+      // that.CreateWeixinOrder();
+    }
+
   },
 
   // cancelHook: function (e) {
@@ -187,11 +194,13 @@ Page({
       goods_cho_all: co_goods_cho_all
     })
     that.calTotal()
+    // console.log(that.data.goods_pay);
   },
 
   calTotal: function () {
     var that = this
     var co_goods_cho_all = that.data.goods_cho_all;
+    app.globalData.goods_cho_all = co_goods_cho_all;
     var goods_choose = [];
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].hook_status == true) {
@@ -213,7 +222,11 @@ Page({
       total_money: total_money,
       goods_pay: goods_choose
     })
-
+    if (app.globalData.goods_cho_all.length==0){
+      that.setData({
+        no_goods:true
+      })
+    }
   },
 
   CreateOrder: function (order_id, store_id, vip_id, member_id, amount_payable, total_amount, amount_payed, type, last_user, unvip_phone, items_json,
@@ -241,12 +254,27 @@ Page({
         'token': app.globalData.token
       },
       success: function (res) {
-
-
+        console.log('需要的order_id：' + order_id);
+        console.log('需要的store_id：' + store_id);
+        console.log('需要的vip_id：' + vip_id);
+        console.log('需要的member_id：' + member_id);
+        console.log('需要的amount_payable：' + amount_payable);
+        console.log('需要的total_amount：' + total_amount);
+        console.log('需要的amount_payed：' + amount_payed);
+        console.log('需要的type：' + type);
+        console.log('需要的last_user：' + last_user);
+        console.log('需要的unvip_phone：' + unvip_phone);
+        console.log('需要的items_json：' + items_json)
         console.log(res)
-        wx.navigateTo({
-          url: '../order_detail/order_detail?order_id=' + res.data.Data.OrderID + '&amount_payed=' + amount_payed + '&total_amount=' + total_amount
-        })
+        if (res.data.Data.IsError == false) {
+          // var total_price = that.data.goods_num * that.data.goods_price
+          console.log('这里需要的order_id:' + res.data.Data.OrderID)
+          wx.navigateTo({
+            url: '../order_confirm/order_confirm?order_id=' + res.data.Data.OrderID
+          })
+        }
+        // that.CreateWeixinOrder(app.globalData.storeid, res.data.Data.OrderID, app.globalData.loginfo.data.Data.openid)
+
 
       },
       fail: function (res) {
@@ -276,16 +304,65 @@ Page({
 
         console.log(res);
         if (res.data.Data.IsError == false) {
-          console.log(res.data.Data.weixin_pay_no);
-          console.log(order_id);
-          that.CheckOrder(order_id, res.data.Data.weixin_pay_no, 0)
-          wx.navigateTo({
-            url: '../shop_car/shop_car'
+          wx.requestPayment({
+            'timeStamp': res.data.Data.WxradeCreateResponse.timeStamp,
+            'nonceStr': res.data.Data.WxradeCreateResponse.nonceStr,
+            'package': res.data.Data.WxradeCreateResponse.package,
+            'signType': res.data.Data.WxradeCreateResponse.signType,
+            'paySign': res.data.Data.WxradeCreateResponse.paySign,
+            'success': function (data) {
+              console.log('付款成功')
+              console.log(data);
+              that.CheckOrder(order_id, data.data.Data.weixin_pay_no, 0)
+
+            },
+            'fail': function (data) {
+            }
           })
         }
+        // if (res.data.Data.IsError == false) {
+        //   console.log(res.data.Data.weixin_pay_no);
+        //   console.log(order_id);
+        //   that.CheckOrder(order_id, res.data.Data.weixin_pay_no, 0)
+        //   wx.navigateTo({
+        //     url: '../shop_car/shop_car'
+        //   })
+        // }
       },
       fail: function (res) {
         console.log('提交CreateWeixinOrder接口返回失败');
+      }
+    })
+  },
+
+  CheckOrder: function (order_id, weixin_pay_no, type) {
+    var that = this;
+    wx.request({
+      url: app.globalData.bd_url + '/api/WxSP/CheckOrder',
+      data: {
+        order_id: order_id,
+        weixin_pay_no: weixin_pay_no,
+        type: type//4取消，0正常确认
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data.Data.IsError == false) {
+          var send_no = res.data.Data.send_no
+          // wx.showToast({
+          //   title: '取货单号：' + send_no,
+          // })
+          wx.navigateTo({
+            url: '../order_detail/order_detail'
+          })
+        }
+
+      },
+      fail: function (res) {
+        console.log('提交CheckOrder接口返回失败');
       }
     })
   },

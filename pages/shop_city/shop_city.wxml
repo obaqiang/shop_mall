@@ -10,7 +10,7 @@
 
 </view>
 <view class="city_right">
-  <view class="goods_list" bindtap="deJump"  wx:for="{{goodsdata}}" wx:if="{{choose_id==item.class_id}}" data-goods_id="{{item.id}}">
+  <view class="goods_list" bindtap="deJump"  wx:for="{{goodsdata}}"  data-goods_id="{{item.id}}">
     <image class="goods_img" src="{{item.thumb}}"></image>
     <text class="goods_desc">{{item.goods_name}}</text>
     <text class="info_tip" wx:if="{{item.is_locale==0}}">快递发货</text>

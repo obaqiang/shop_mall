@@ -1,48 +1,51 @@
 <!--pages/order_detail/order_detail.wxml-->
 <view class="order_status">
   <image class="status_img" src="http://testimg.bdvip.net/smallprogram/36px_36px_gouwuche.png"></image>
-  <text class="status_text">请等待发货</text>
+  <text class="status_text" wx:if="{{send_status==1}}">请等待发货</text>
+  <text class="status_text" wx:if="{{send_status==2}}">已发货</text>
+  <text class="status_text" wx:if="{{send_status==3}}">已退货</text>
 </view>
 <view class="address_detail">
   <image class="ad_de_img" src="http://testimg.bdvip.net/smallprogram/28px_35px_dizhi.png"></image>
-  <text class="ad_de_name">谢老司机 13032115151</text>
-  <text class="ad_de_more">江苏省昆山市的时刻记得是看似简单快捷</text>
+  <text class="ad_de_name">{{consignee}} {{phone}}</text>
+  <text class="ad_de_more">{{province}}{{city}}{{area}}{{street}}</text>
 </view>
 <view class="goods_area">
   <view class="list_head">
     <image class="logo_img" src="http://testimg.bdvip.net/smallprogram/44px_logo.png"></image>
-    <text class="shop_name">麦田香草</text>
+    <text class="shop_name">{{store_name}}</text>
   </view>
-  <view class="goods_list">
+  <view class="goods_list" wx:for="{{orderitems}}">
+    <image class="goods_img" src="{{item.thumb}}"></image>
+    <!-- <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text> -->
+    <text class="goods_express" wx:if="{{send_type==1}}">到店领取</text>
+    <text class="goods_express" wx:if="{{send_type==2}}">快递发货</text>
+    <text class="goods_price">￥{{item.real_price}}</text>
+    <text class="goods_num">x{{item.qty}}</text>
+  </view>
+  <!-- <view class="goods_list">
     <image class="goods_img" src="http://testimg.bdvip.net/smallprogram/164px_164px_naquhai.png"></image>
     <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text>
     <text class="goods_express">快递发货</text>
     <text class="goods_price">￥9.9</text>
     <text class="goods_num">x23</text>
-  </view>
-  <view class="goods_list">
-    <image class="goods_img" src="http://testimg.bdvip.net/smallprogram/164px_164px_naquhai.png"></image>
-    <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text>
-    <text class="goods_express">快递发货</text>
-    <text class="goods_price">￥9.9</text>
-    <text class="goods_num">x23</text>
-  </view>
+  </view> -->
 
 </view>
 <view class="info_area">
   <view class="area_1">
-    <text class="area_left">商品金额(2件)</text>
-    <text class="area_right">￥19.80</text>
+    <text class="area_left">商品金额({{total_num}}件)</text>
+    <text class="area_right">￥{{amount_payed}}</text>
 
   </view>
-  <view class="area_1">
+  <!-- <view class="area_1">
     <text class="area_left">商品金额(2件)</text>
     <text class="area_right">￥19.80</text>
-  </view>
+  </view> -->
 </view>
 <view class="money_area">
   <text class="money_left">总金额</text>
-  <text class="money_right">￥19.80</text>
+  <text class="money_right">￥{{amount_payed}}</text>
 </view>
 <!-- <view class="coupon_area">
   <view class="coupon_list">
@@ -52,10 +55,10 @@
   </view>
 </view> -->
 
-<view class="barcode_area">
+<view class="barcode_area" wx:if="{{send_no!=''}}">
   <text class="ver">验证码</text>
-  <text class="ver_num">8878 4546 4568</text>
-  <text class="ver_status">未使用</text>
+  <text class="ver_num">{{send_no}}</text>
+  <!-- <text class="ver_status">未使用</text> -->
   <view class="qrcode">
     <canvas canvas-id="qrcode" />
   </view>
@@ -65,16 +68,24 @@
 
 <view class="order_info">
   <text class="info_title">订单信息</text>
-  <text class="info_list">订单编号:1564215643</text>
-  <text class="info_list">付款时间:2018-45-56 12:44:55</text>
+  <text class="info_list">订单编号:{{order_id}}</text>
+  <text class="info_list">付款时间:{{pay_time}}</text>
   <text class="info_list">支付方式:微信支付</text>
 </view>
+
+<view class="order_info">
+  <text class="info_title">商家信息</text>
+  <text class="info_list">商家名称:{{store_name}}</text>
+  <text class="info_list">商家地址:{{address}}</text>
+  <text class="info_list">电话:{{tel}}</text>
+</view>
+
 <view class="order_bottom">
-  <view class="bot_left">
+  <view class="bot_left" bindtap="leftTap">
     <image class="left_img" src="http://testimg.bdvip.net/smallprogram/36px_36px_dianhua.png"></image>
     <text class="left_text">联系卖家</text>
   </view>
-  <view class="bot_left">
+  <view class="bot_left" bindtap="rightTap">
     <image class="right_img" src="http://testimg.bdvip.net/smallprogram/36px_36px_juxugouwu.png"></image>
     <text class="right_text">继续购物</text>
   </view>
