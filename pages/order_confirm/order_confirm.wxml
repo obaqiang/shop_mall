@@ -1,10 +1,15 @@
 <!--pages/order_confirm/order_confirm.wxml-->
-<view class="address_head" bindtap="addressJump">
+<view class="pay_way" bindtap="payModal_2" wx:if="{{send_way_show==true}}">
+  <text class="pay_text">收货方式</text>
+  <text class="pay_text_new">{{address_text}}</text>
+  <image class="pay_image" src="http://testimg.bdvip.net/smallprogram/17px_30px_la.png"></image>
+</view>
+<view class="address_head" bindtap="addressJump" wx:if="{{set_address==true}}">
   <image class="address_icon" src="http://testimg.bdvip.net/smallprogram/28px_35px_dizhi.png"></image>
   <text class="address_ask" wx:if="{{no_address==true}}">您还没有收货地址</text>
   <text class="adress_alert" wx:if="{{no_address==true}}">请先填写收货地址方便收货</text>
-  <text class="user_show">{{user_name}}  {{user_tel}}</text>
-  <text class="adress_show">{{province}}{{city}}{{area}}{{street}}</text>
+  <text class="user_show" wx:if="{{no_address==false}}">{{user_name}}  {{user_tel}}</text>
+  <text class="adress_show" wx:if="{{no_address==false}}">{{province}}{{city}}{{area}}{{street}}</text>
   <image class="address_right" src="http://testimg.bdvip.net/smallprogram/17px_30px_la.png"></image>
 </view>
 <view class="goods_area">
@@ -12,10 +17,15 @@
     <image class="logo_img" src="http://testimg.bdvip.net/smallprogram/44px_logo.png"></image>
     <text class="shop_name">麦田香草</text>
   </view> -->
-  <view class="goods_list" wx:for="{{order_items}}" >
+  <view class="goods_list" wx:for="{{order_items}}">
     <image class="goods_img" src="{{item.thumb}}"></image>
-    <text class="goods_desc">{{item.goods_name}}</text>
-    <text class="goods_express">快递发货</text>
+    <view class="fuck_area">
+      <text class="goods_desc">{{item.goods_name}}</text>
+      <text class="goods_express_1" wx:if="{{item.is_locale==0}}">快递发货</text>
+      <text class="goods_express_2" wx:if="{{item.is_locale==1}}">到店领取</text>
+      <text class="goods_express_3" wx:if="{{item.is_locale==2}}">快递/到店</text>
+    </view>
+
     <text class="goods_price">￥{{item.real_price}}</text>
     <text class="goods_num">x{{item.qty}}</text>
   </view>
@@ -34,7 +44,7 @@
     <text class="area_right">￥{{total_price}}</text>
 
   </view>
-  
+
 </view>
 <view class="money_area">
   <text class="money_left">总金额</text>
@@ -51,9 +61,12 @@
 
 <view class="pay_way" bindtap="payModal">
   <text class="pay_text">付款方式</text>
+  <text class="pay_text_place">{{pay_text}}</text>
   <image class="pay_image" src="http://testimg.bdvip.net/smallprogram/17px_30px_la.png"></image>
 </view>
-<view class="complex">
+
+
+<!-- <view class="complex">
   <text class="complex_1">红包</text>
   <text class="complex_2">￥10.00</text>
 </view>
@@ -64,27 +77,27 @@
 <view class="complex">
   <text class="complex_1">可用积分(10积分=1元)</text>
   <text class="complex_2">100</text>
-</view>
+</view> -->
 
 <view class="confirm_bottom">
   <text class="bottom_1">实付金额:</text>
   <text class="bottom_2">￥{{total_price}}</text>
-  <text class="bottom_3" bindtap="crOr" wx:if="{{no_address==false}}">确定支付</text>
-  <text class="bottom_3_no" wx:if="{{no_address==true}}">确定支付</text>
+  <text class="bottom_3" bindtap="crOr" wx:if="{{can_pay==true}}">确定支付</text>
+  <text class="bottom_3_no" wx:if="{{can_pay==false}}">确定支付</text>
 </view>
 
 <view class="pay_way_cho" wx:if="{{modal_pay==true}}">
   <text class="pay_way_cho_text">请选择支付方式</text>
   <view class="pay_wx" bindtap="weixinWay">
     <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_weixin.png"></image>
-    <text class="pay_wx_text">微信支付</text>
-    <text class="co_img" ></text>
+    <text class="pay_wx_text">小程序支付</text>
+    <text class="co_img"></text>
     <image class="ok_img" wx:if="{{weixin_pay}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
   </view>
-  <view class="pay_wx" bindtap="weixinWay">
+  <view class="pay_wx" bindtap="bdWay">
     <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_BD.png"></image>
     <text class="pay_wx_text">BD卡支付</text>
-    <text class="co_img" ></text>
+    <text class="co_img"></text>
     <image class="ok_img" wx:if="{{weixin_pay==false}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
   </view>
   <!-- <view class="pay_wx">
@@ -93,6 +106,36 @@
     <text class="co_img"></text>
     <image class="ok_img" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
   </view> -->
-  <button class="pay_sure" bindtap="payModalhide">确定</button>
+  <!-- <button class="pay_sure" bindtap="payModalhide">确定</button> -->
 </view>
 <view class="pay_mask" bindtap="payModalhide" wx:if="{{modal_pay==true}}"></view>
+
+<view class="pay_way_cho" wx:if="{{modal_pay_2==true}}">
+  <text class="pay_way_cho_text">请选择收货方式</text>
+  <view class="pay_wx" bindtap="setAddress">
+    <!-- <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_weixin.png"></image> -->
+    <text class="pay_wx_text">快递发货</text>
+    <text class="co_img"></text>
+    <image class="ok_img" wx:if="{{set_address==true}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
+  </view>
+  <view class="pay_wx" bindtap="cancelAddress">
+    <!-- <image class="pay_wx_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_BD.png"></image> -->
+    <text class="pay_wx_text">到店领取</text>
+    <text class="co_img"></text>
+    <image class="ok_img" wx:if="{{set_address==false}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
+  </view>
+  <!-- <view class="pay_wx">
+    <image class="pay_bd_img" src="http://testimg.bdvip.net/smallprogram/38px_38px_BD.png"></image>
+    <text>BD卡支付</text>
+    <text class="co_img"></text>
+    <image class="ok_img" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
+  </view> -->
+  <!-- <button class="pay_sure" bindtap="payModalhide">确定</button> -->
+</view>
+<view class="pay_mask" bindtap="payModalhide_2" wx:if="{{modal_pay_2==true}}"></view>
+
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+</view>

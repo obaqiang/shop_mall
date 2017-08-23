@@ -15,12 +15,12 @@ page {
   height: 40rpx;
   position: absolute;
   top: 50rpx;
-  left: 50rpx;
+  left: 30rpx;
 }
 
 .address_right {
   width: 20rpx;
-  height: 40rpx;
+  height: 30rpx;
   position: absolute;
   right: 20rpx;
   top: 50rpx;
@@ -80,7 +80,7 @@ page {
 
 .goods_img {
   width: 180rpx;
-  height: 170rpx;
+  height: 180rpx;
   position: absolute;
   top: 20rpx;
   left: 20rpx;
@@ -91,27 +91,60 @@ page {
   height: 200rpx;
   background: #f2f2f2;
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
-
-.goods_desc {
-  font-size: 30rpx;
+.fuck_area{
   position: absolute;
   top: 20rpx;
-  left: 230rpx;
+  left: 210rpx;
+}
+.goods_desc {
+  font-size: 25rpx;
+  /* position: absolute;
+  top: 15rpx;
+  left: 230rpx; */
   width: 500rpx;
+  display: block;
 }
 
-.goods_express {
-  font-size: 25rpx;
-  position: absolute;
-  top: 100rpx;
-  left: 230rpx;
+.goods_express_1 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 110rpx;
+  left: 230rpx; */
+  border: 1px solid #2e74bc;
+  color: #2e74bc;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
+  
+}
+
+.goods_express_2 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 110rpx;
+  left: 230rpx; */
+  border: 1px solid #09aa3e;
+  color: #09aa3e;
+  border-radius: 5rpx;
+  padding: 5rpx;
+}
+.goods_express_3 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 110rpx;
+  left: 230rpx; */
+  border: 1px solid #ff9205;
+  color: #ff9205;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
 }
 
 .goods_price {
   position: absolute;
-  top: 140rpx;
-  left: 230rpx;
+  top: 160rpx;
+  left: 210rpx;
+  color: #cb2920
 }
 
 .goods_num {
@@ -135,12 +168,14 @@ page {
 
 .area_left {
   float: left;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
+  font-size: 30rpx;
 }
 
 .area_right {
   float: right;
   margin-right: 20rpx;
+  font-size: 30rpx;
 }
 
 .money_area {
@@ -152,19 +187,22 @@ page {
 
 .money_left {
   float: left;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
+  font-size: 30rpx;
 }
 
 .money_right {
   float: right;
   margin-right: 20rpx;
   color: #cb2920;
+  font-size: 30rpx;
 }
 
 .pay_way {
   overflow: hidden;
   background: #fff;
   font-size: 30rpx;
+  margin-bottom: 30rpx;
   margin-top: 30rpx;
   line-height: 80rpx;
 }
@@ -174,19 +212,19 @@ page {
   height: 30rpx;
   float: right;
   margin-right: 20rpx;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
 }
 
 .pay_text {
   float: left;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
 }
 
 .confirm_bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #f2f2f2;
+  background: #fff;
   height: 100rpx;
   line-height: 100rpx;
 }
@@ -326,4 +364,13 @@ page {
 .complex_2{
   float: right;
   margin-right: 20rpx;
+}
+.pay_text_new{
+  margin-left: 55%;
+  color:#cb2920;
+}
+.pay_text_place{
+  position: absolute;
+  color: #cb2920;
+  right: 60rpx;
 }

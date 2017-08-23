@@ -59,15 +59,15 @@ Page({
     })
   },
   rightTap: function () {
-    wx.navigateTo({
+    wx.switchTab({
       url: '../shop_city/shop_city',
     })
   },
-  leftTap:function(){
+  leftTap: function () {
     var that = this
-    
+
     var tel = that.data.tel
-   
+
     tel = tel.split('，')
     console.log(tel)
     wx.makePhoneCall({
@@ -78,7 +78,7 @@ Page({
   GetVipAddress: function (open_id) {
     var that = this;
     wx.request({
-      url: app.globalData.bd_url + '/api/SmallProgram/GetVipAddress?id=0&union_id=' + open_id,
+      url: app.globalData.bd_url + '/api/SmallProgram/GetVipAddress',
       data: {
         id: 0,
         union_id: open_id
@@ -92,14 +92,17 @@ Page({
       success: function (res) {
         console.log('GetVipAddress接口开始')
         console.log(res);
-        that.setData({
-          consignee: res.data.Data.Address.consignee,
-          phone: res.data.Data.Address.phone,
-          province: res.data.Data.Address.province,
-          city: res.data.Data.Address.city,
-          area: res.data.Data.Address.area,
-          street: res.data.Data.Address.street,
-        })
+        if (res.data.Data.Address) {
+          that.setData({
+            consignee: res.data.Data.Address.consignee,
+            phone: res.data.Data.Address.phone,
+            province: res.data.Data.Address.province,
+            city: res.data.Data.Address.city,
+            area: res.data.Data.Address.area,
+            street: res.data.Data.Address.street,
+          })
+        }
+
 
       },
       fail: function (res) {
@@ -137,9 +140,12 @@ Page({
           pay_time: res.data.Data.pay_time,
           send_no: res.data.Data.send_no,
           send_status: res.data.Data.send_status,
-          send_type: res.data.Data.send_type
+          send_type: res.data.Data.send_type,
+          pay_name : res.data.Data.pay_name
         })
-        wxbarcode.barcode('barcode', that.data.send_no, 680, 200);
+        wxbarcode.qrcode('qrcode', that.data.send_no, 420,420);
+        // wxbarcode.qrcode('qrcode', '1234567890123456789', 420, 420);
+        // wxbarcode.barcode('barcode', '1234567890123456789', 680, 200);
       },
       fail: function (res) {
         console.log('提交GetOrderItemsByOrderID接口返回失败');
@@ -162,6 +168,8 @@ Page({
     that.GetOrderItemsByOrderID(options.order_id)
     that.GetStoreInfo(app.globalData.storeid)
     that.GetVipAddress(app.globalData.loginfo.data.Data.openid)
+ 
+ 
   },
 
   /**
@@ -203,7 +211,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**

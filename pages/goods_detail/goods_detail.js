@@ -8,9 +8,10 @@ Page({
    */
   data: {
     imgUrls: [],
-    indicatorDots: false,
-    autoplay: false,
-    interval: 5000,
+    imgUrls_2: [],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
     duration: 1000,
     goods_price: '',
     goods_name: '',
@@ -21,7 +22,9 @@ Page({
     total_money: '',
     if_has_goods:false,
     sell_goods:'',
-    goods_integral:''
+    goods_integral:'',
+    hidden:'',
+    is_locale:''
   },
 
   carJump: function () {
@@ -49,27 +52,45 @@ Page({
       success: function (res) {
         console.log('GetGoodsInfo接口开始')
         console.log(res);
-        var GoodsImgList = res.data.Data.GoodsImgList;
-        var img_array = [];
-        for (var i = 0; i < GoodsImgList.length; i++) {
-          var img_url = GoodsImgList[i].img_url;
-          img_array.push(img_url);
+        if(res.data.Data.IsError==false){
+          var GoodsImgList = res.data.Data.GoodsImgList;
+          var img_array = [];//封面图片
+          var img_array_2 = [];//详情图片
+          for (var i = 0; i < GoodsImgList.length; i++) {
+            if (GoodsImgList[i].img_class==1){//封面图片
+              var img_url = GoodsImgList[i].img_url;
+              img_array.push(img_url);
+            } else if (GoodsImgList[i].img_class == 2){//详情图片
+              var img_url = GoodsImgList[i].img_url;
+              img_array_2.push(img_url);
+            }
+          }
 
+          that.setData({
+            imgUrls: img_array,
+            imgUrls_2: img_array_2,
+            goods_price: res.data.Data.Goods.goods_price,
+            goods_name: res.data.Data.Goods.goods_name,
+            goods_desc: res.data.Data.Goods.goods_desc,
+            is_locale: res.data.Data.Goods.is_locale,
+            sell_goods: res.data.Data.Goods.sell_goods,
+            goods_integral: res.data.Data.Goods.goods_integral,
+            hidden: true,
+            is_locale: res.data.Data.Goods.is_locale
+          })
+        }else{
+          wx.showToast({
+            title: '获取商品失败，请退出重试',
+          })
         }
-
-        that.setData({
-          imgUrls: img_array,
-          goods_price: res.data.Data.Goods.goods_price,
-          goods_name: res.data.Data.Goods.goods_name,
-          goods_desc: res.data.Data.Goods.goods_desc,
-          is_locale: res.data.Data.Goods.is_locale,
-          sell_goods: res.data.Data.Goods.sell_goods,
-          goods_integral: res.data.Data.Goods.goods_integral
-        })
+        
 
       },
       fail: function (res) {
         console.log('提交GetGoodsInfo接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -117,8 +138,13 @@ Page({
         if (res.data.Data.IsError == false) {
           // var total_price = that.data.goods_num * that.data.goods_price
           console.log('这里需要的order_id:' + res.data.Data.OrderID)
+          app.globalData.order_confirm_order_id = res.data.Data.OrderID
           wx.navigateTo({
             url: '../order_confirm/order_confirm?order_id=' + res.data.Data.OrderID
+          })
+        }else{
+          wx.showToast({
+            title: '提交订单失败，请退出重试',
           })
         }
         // wx.navigateTo({
@@ -128,6 +154,9 @@ Page({
       },
       fail: function (res) {
         console.log('提交订单接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -140,7 +169,7 @@ Page({
     goods_list.goods_price = that.data.goods_price;
     goods_list.goods_name = that.data.goods_name;
     goods_list.goods_desc = that.data.goods_desc;
-    goods_list.imgUrls = that.data.imgUrls;
+    goods_list.imgUrls = that.data.imgUrls[0];
     goods_list.goods_id = that.data.goods_id;
     goods_list.is_locale = that.data.is_locale
 

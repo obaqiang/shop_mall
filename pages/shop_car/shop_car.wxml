@@ -9,10 +9,14 @@
   <view class="goods_list" wx:for="{{goods_cho_all}}" wx:if="{{item.show==true}}">
     <text wx:if="{{item.hook_status ==false}}" data-goods_id="{{item.goods_id}}" bindtap="getHook" class="cho_cir"></text>
     <image wx:if="{{item.hook_status ==true}}" data-goods_id="{{item.goods_id}}" bindtap="getHook" class="goods_cho" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>
-    <image class="goods_img" src="{{item.imgUrls[0]}}" data-goods_id="{{item.goods_id}}" bindtap="getHook"></image>
-    <text class="goods_desc">{{item.goods_name}}</text>
-    <text class="goods_ser" wx:if="{{item.is_locale == 0}}">快递发货</text>
-    <text class="goods_ser" wx:if="{{item.is_locale == 1}}">到店领取</text>
+    <image class="goods_img" src="{{item.imgUrls}}" data-goods_id="{{item.goods_id}}" bindtap="getHook"></image>
+
+    <view class="fuck_area">
+      <text class="goods_desc">{{item.goods_name}}</text>
+      <text class="goods_ser_1" wx:if="{{item.is_locale == 0}}">快递发货</text>
+      <text class="goods_ser_2" wx:if="{{item.is_locale == 1}}">到店领取</text>
+      <text class="goods_ser_3" wx:if="{{item.is_locale == 2}}">到店/快递</text>
+    </view>
     <text class="goods_price">￥{{item.goods_price}}</text>
     <view class="goods_num">
       <image class="min_img" data-goods_id="{{item.goods_id}}" bindtap="minBtn" src="http://testimg.bdvip.net/smallprogram/minus.png"></image>
@@ -67,4 +71,5 @@
   <view class="no_goods_text_3" bindtap="go_see">去逛逛</view>
   <image class="no_goods_img" src="http://testimg.bdvip.net/smallprogram/40px_40px_logo.png"></image>
   <view class="no_goods_bd">BD贵宾卡提供技术支持</view>
+  <view class="no_goods_bd">电话:159 9566 6777</view>
 </view>

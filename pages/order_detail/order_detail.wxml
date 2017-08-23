@@ -17,9 +17,12 @@
   </view>
   <view class="goods_list" wx:for="{{orderitems}}">
     <image class="goods_img" src="{{item.thumb}}"></image>
-    <!-- <text class="goods_desc">炒鸡无敌好吃的慕斯蛋糕，保证你吃了一次就想吐</text> -->
-    <text class="goods_express" wx:if="{{send_type==1}}">到店领取</text>
-    <text class="goods_express" wx:if="{{send_type==2}}">快递发货</text>
+    <view class="fuck_area">
+      <text class="goods_desc">{{item.goods_name}}</text>
+      <text class="goods_express_1" wx:if="{{send_type==1}}">到店领取</text>
+      <text class="goods_express_2" wx:if="{{send_type==2}}">快递发货</text>
+    </view>
+
     <text class="goods_price">￥{{item.real_price}}</text>
     <text class="goods_num">x{{item.qty}}</text>
   </view>
@@ -70,7 +73,8 @@
   <text class="info_title">订单信息</text>
   <text class="info_list">订单编号:{{order_id}}</text>
   <text class="info_list">付款时间:{{pay_time}}</text>
-  <text class="info_list">支付方式:微信支付</text>
+  <text class="info_list" wx:if="{{pay_name!='卡支付'}}">支付方式:微信支付</text>
+  <text class="info_list" wx:if="{{pay_name=='卡支付'}}">支付方式:BD支付</text>
 </view>
 
 <view class="order_info">
@@ -79,6 +83,8 @@
   <text class="info_list">商家地址:{{address}}</text>
   <text class="info_list">电话:{{tel}}</text>
 </view>
+
+<view class="white_area"></view>
 
 <view class="order_bottom">
   <view class="bot_left" bindtap="leftTap">

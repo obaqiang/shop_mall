@@ -31,6 +31,22 @@ page {
   display: inline-block;
   line-height: 100rpx;
   position: absolute;
+  width: 80%;
+  top: 25rpx;
+  left: 150rpx;
+}
+.info_area_2 {
+  border-bottom: 1rpx solid #ddd;
+  line-height: 100rpx;
+  position: relative;
+  font-size: 30rpx;
+}
+
+.info_area_2 input {
+  display: inline-block;
+  line-height: 100rpx;
+  position: absolute;
+  width: 70%;
   top: 25rpx;
   left: 150rpx;
 }
@@ -74,4 +90,7 @@ page {
   top: 10rpx;
   right: 0;
   font-size: 30rpx;
+}
+.input_need{
+  color: #cb2920;
 }

@@ -63,15 +63,21 @@ page {
   left: 90rpx;
   border: 1rpx solid #ddd;
 }
-
-.goods_desc {
+.fuck_area{
   position: absolute;
-  display: inline-block;
-  font-size: 30rpx;
-  width: 400rpx;
+  top: 20rpx;
   left: 300rpx;
-  top: 30rpx;
+  width: 60%;
+}
+.goods_desc {
+  /* position: absolute; */
+
+  font-size: 25rpx;
+  width: 400rpx;
+  /* left: 300rpx;
+  top: 25rpx; */
   color: #333;
+  display: block;
 }
 
 .goods_ser {
@@ -84,6 +90,36 @@ page {
   border-radius: 10rpx;
   padding: 5rpx 10rpx;
 }
+.goods_ser_1 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 115rpx;
+  left: 300rpx; */
+  color: #2e74bc;
+  border: 1rpx solid #2e74bc;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
+}
+.goods_ser_2 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 115rpx;
+  left: 300rpx; */
+  color: #09aa3e;
+  border: 1rpx solid #09aa3e;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
+}
+.goods_ser_3 {
+  font-size: 20rpx;
+  /* position: absolute;
+  top: 115rpx;
+  left: 300rpx; */
+  color: #ff9205;
+  border: 1rpx solid #ff9205;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
+}
 
 .goods_price {
   position: absolute;
@@ -93,19 +129,19 @@ page {
 }
 
 .min_img {
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
   position: absolute;
-  left: 20rpx;
-  top: 15rpx;
+  left: 5rpx;
+  top: 5rpx;
 }
 
 .plus_img {
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
   position: absolute;
-  right: 20rpx;
-  top: 15rpx;
+  right: 5rpx;
+  top: 5rpx;
 }
 
 .goods_num {
@@ -218,7 +254,7 @@ page {
   width: 50rpx;
   height: 50rpx;
   display: block;
-  margin: 300rpx auto 100rpx;
+  margin: 300rpx auto 60rpx;
 }
 
 .no_goods_bd {

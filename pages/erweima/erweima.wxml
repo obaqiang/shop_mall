@@ -1,0 +1,18 @@
+
+
+<view class="container page">
+<image class="img_url" src="{{getvipinfo_data.Store.logo_img}}"></image>
+<text class="text">出示会员卡，扫码即可</text>
+  <view class="panel">
+    <view class="header">
+    </view>
+    <view class="barcode" >      
+      <canvas canvas-id="barcode" />
+      <view class="barnum">{{code}}</view>
+    </view>
+    <view class="qrcode">
+      <canvas canvas-id="qrcode" />
+    </view>
+  </view>
+</view>
+

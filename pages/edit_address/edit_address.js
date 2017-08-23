@@ -18,11 +18,11 @@ Page({
     phone: '',
     street: '',
     save_status: false,
-    id:'',
-    hidden:false
+    id: '',
+    hidden: false
   },
 
-  SaveVipAddress: function (province, city, area, street, consignee, phone, open_id,id) {
+  SaveVipAddress: function (province, city, area, street, consignee, phone, open_id, id) {
     var that = this;
     wx.request({
       url: app.globalData.bd_url + '/api/SmallProgram/SaveVipAddress',
@@ -51,7 +51,7 @@ Page({
       },
 
       success: function (res) {
-        
+
         console.log(res);
         if (res.data.Data.IsError == false) {
           wx.showToast({
@@ -61,10 +61,17 @@ Page({
             url: '../address/address'
           })
 
+        } else {
+          wx.showToast({
+            title: '保存地址失败，请退出重试',
+          })
         }
       },
       fail: function (res) {
         console.log('提交SaveVipAddress接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -85,25 +92,35 @@ Page({
 
       success: function (res) {
         console.log(res)
-        for (var i = 0; i < res.data.Data.addressList.length; i++) {
-          if (id == res.data.Data.addressList[i].id){
-            that.setData({
-              id:id,
-              consignee: res.data.Data.addressList[i].consignee,
-              phone: res.data.Data.addressList[i].phone,
-              province: res.data.Data.addressList[i].province,
-              city: res.data.Data.addressList[i].city,
-              county: res.data.Data.addressList[i].area,
-              street: res.data.Data.addressList[i].street,
-              hidden:true
+        if (res.data.Data.IsError == false) {
+          for (var i = 0; i < res.data.Data.addressList.length; i++) {
+            if (id == res.data.Data.addressList[i].id) {
+              that.setData({
+                id: id,
+                consignee: res.data.Data.addressList[i].consignee,
+                phone: res.data.Data.addressList[i].phone,
+                province: res.data.Data.addressList[i].province,
+                city: res.data.Data.addressList[i].city,
+                county: res.data.Data.addressList[i].area,
+                street: res.data.Data.addressList[i].street,
+                hidden: true
 
-            })
+              })
+            }
           }
+        } else {
+          wx.showToast({
+            title: '获取地址列表失败，请退出重试',
+          })
         }
+
 
       },
       fail: function (res) {
         console.log('提交GetVipAddressList接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -126,7 +143,7 @@ Page({
         save_status: true
       })
       console.log(app.globalData.loginfo.data.Data.openid)
-      that.SaveVipAddress(that.data.province, that.data.city, that.data.county, that.data.street, that.data.consignee, that.data.phone, app.globalData.loginfo.data.Data.openid,that.data.id)
+      that.SaveVipAddress(that.data.province, that.data.city, that.data.county, that.data.street, that.data.consignee, that.data.phone, app.globalData.loginfo.data.Data.openid, that.data.id)
 
 
     }

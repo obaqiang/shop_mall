@@ -1,15 +1,17 @@
 <!--pages/goods_detail/goods_detail.wxml-->
-<swiper style="height:500rpx;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+<swiper style="height:560rpx;margin-bottom:30rpx;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
-      <image src="{{item}}" class="slide-image" style="width:100%;" />
+      <image src="{{item}}" class="slide-image" style="width:100%;height:560rpx;" />
     </swiper-item>
   </block>
 </swiper>
 
 <view class="info_area">
   <text class="goods_price">￥{{goods_price}}</text>
-  <text class="goods_express">快递/到店</text>
+  <text class="goods_express_1" wx:if="{{is_locale==0}}">快递发货</text>
+  <text class="goods_express_2" wx:if="{{is_locale==1}}">到店领取</text>
+  <text class="goods_express_3" wx:if="{{is_locale==2}}">快递/到店</text>
   <text class="goods_stock">10积分*已售{{sell_goods}}件</text>
 </view>
 
@@ -27,7 +29,7 @@
 <view class="img_area">
 
   <text class="img_desc">商品详情</text>
-  <image wx:for="{{imgUrls}}" class="img_list" src="{{item}}"></image>
+  <image wx:for="{{imgUrls_2}}" mode="widthFix"  class="img_list" src="{{item}}"></image>
 
 </view>
 
@@ -41,6 +43,11 @@
   <text class="bottom_buy" bindtap="buyJump">立即购买</text>
   <text class="bottom_add" bindtap="plusGoods">加入购物车</text>
 
+</view>
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
 </view>
 
 

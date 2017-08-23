@@ -1,33 +1,47 @@
 <!--pages/my_order/my_order.wxml-->
 <view class="list_head">
-  <text class="{{type==0?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="1">全部订单</text>
-  <text class="{{type==5?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="2">待付款</text>
-  <text class="{{type==2?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="3">未完成</text>
-  <text class="{{type==6?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="4">已完成</text>
+  <text class="{{see_type==1?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="1">全部订单</text>
+  <text class="{{see_type==2?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="2">待付款</text>
+  <text class="{{see_type==3?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="3">未完成</text>
+  <text class="{{see_type==4?'list_body_on':'list_body'}}" bindtap="showOrder" data-orderstatus="4">已完成</text>
 </view>
 
 
-<view class="list_area" wx:for="{{orders}}" bindtap="orderJump" data-order_id="{{item.order_id}}" data-text_status="{{item.text_status}}" data-total_amount="{{item.total_amount}}" data-amount_payable="{{item.amount_payable}}">
+<view class="list_area" wx:for="{{orders}}" data-text_status="{{item.text_status}}" bindtap="orderJump" data-order_id="{{item.order_id}}"  data-text="{{item.text}}" data-total_amount="{{item.total_amount}}" data-amount_payable="{{item.amount_payable}}">
   <text class="area_1">{{item.add_time}}</text>
-  <text class="{{item.text_status}}">{{item.text}}</text>
-  <image class="area_icon" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
-  <text class="area_3">共{{item.total_amount}}件商品</text>
+  <text class="{{item.text_status}}" wx:if="{{item.amount_payable>0}}" bindtap="orderJump" data-order_id="{{item.order_id}}" data-text="{{item.text}}">{{item.text}}</text>
+  <text wx:if="{{item.amount_payable<0||item.back_already==true}}" class="back_already">已退款</text>
+  <text class="area_back" wx:if="{{item.text_back=='退款'&&item.amount_payable>0}}" data-return_amount="{{item.total_amount}}" data-order_id="{{item.order_id}}" catchtap="backMoney">{{item.text_back}}</text>
+  <image class="area_icon" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png" bindtap="orderJump" data-order_id="{{item.order_id}}"></image>
+  <!-- <text class="area_3">共{{item.total_amount}}件商品</text> -->
   <text class="area_4">合计:</text>
-  <text class="area_5">￥{{item.amount_payable}}</text>
+  <text class="area_5" wx:if="{{item.amount_payable>0}}">￥{{item.money_show}}</text>
+  <text class="area_5_no" wx:if="{{item.amount_payable<0}}">￥{{item.money_show}}</text>
 </view>
-<!--<view class="list_area">
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+</view>
+
+<!-- <view class="list_area">
+  <text class="area_1">交易时间2017-45-45 15:21</text>
+  <text class="area_2">已完成</text>
+  <view class="new_area">
+    <image class="new_area_img" src="http://testimg.bdvip.net/smallprogram/288px_496px_haibuhai.png"></image>
+    <text class="new_area_desc"></text>
+  </view>
+
+   <text class="area_3">共3件商品</text>
+  <text class="area_4">合计:</text>
+  <text class="area_5">￥204.00</text> 
+</view> -->
+<!-- <view class="list_area">
   <text class="area_1">2017-45-45 15:21</text>
   <text class="area_2">已完成</text>
+  <text class="area_back">退款</text>
   <image class="area_icon" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
   <text class="area_3">共3件商品</text>
   <text class="area_4">合计:</text>
   <text class="area_5">￥204.00</text>
-</view>
-<view class="list_area">
-  <text class="area_1">2017-45-45 15:21</text>
-  <text class="area_2">已完成</text>
-  <image class="area_icon" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
-  <text class="area_3">共3件商品</text>
-  <text class="area_4">合计:</text>
-  <text class="area_5">￥204.00</text>
-</view>-->
+</view>  -->

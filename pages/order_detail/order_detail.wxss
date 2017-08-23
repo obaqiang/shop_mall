@@ -162,3 +162,17 @@ page {
   margin-left: 60rpx;
   color: #686868;
 }
+.goods_express_1{
+  /* position: absolute;
+  top: 70rpx;
+  left: 230rpx; */
+}
+
+.goods_express_2{
+  /* position: absolute;
+  top: 70rpx;
+  left: 230rpx; */
+}
+.white_area{
+  height: 300rpx;
+}

@@ -15,26 +15,58 @@
   position: absolute;
   top: 28rpx;
   left: 150rpx;
+  width: 75%;
+
 }
 
 .way_input {
   position: absolute;
   top: 28rpx;
   left: 180rpx;
+  width: 75%;
+
 }
-.address_input{
+
+.address_input {
   position: absolute;
-  top: 28rpx;
+  top: 0rpx;
   left: 180rpx;
+  width: 82%;
+
 }
-.btn_save{
+
+.btn_save {
   width: 95%;
   margin: 40rpx auto;
   color: #fff;
+  background: #c1c1c1;
 }
-.btn_save_ok{
+
+.btn_save_ok {
   width: 95%;
   margin: 40rpx auto;
   color: #fff;
   background: #cb2920;
+}
+
+ .cityheader {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+picker-view-column{
+  left: 5%;
+}
+.city-cancel {
+  position: absolute;
+  left: 10%;
+}
+
+.city-true {
+  position: absolute;
+ right: 10%;
+} 
+.input_need{
+  color: #cb2920;
 }

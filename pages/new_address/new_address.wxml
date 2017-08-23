@@ -1,19 +1,20 @@
 <!--pages/new_address/new_address.wxml-->
 <view class="new_name">
-  <text class="name_text">收货人:</text>
+  <text class="name_text"><text class="input_need">*</text>收货人:</text>
   <input class="name_input" bindblur="namePut" placeholder="" />
 </view>
 <view class="new_name">
-  <text class="name_text">联系方式:</text>
+  <text class="name_text"><text class="input_need">*</text>联系方式:</text>
   <input class="way_input" bindblur="telPut" placeholder="" />
 </view>
 <view class="new_name">
-  <text class="name_text">所在地区:</text>
-  <input class="address_input" placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+  <text class="name_text"><text class="input_need">*</text>所在地区:</text>
+  <view class="address_input" bindtap="open">{{province}}-{{city}}-{{county}}</view>
+  <!-- <input class="address_input"  placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" /> -->
 </view>
 
 <view class="new_name">
-  <text class="name_text">详细地址:</text>
+  <text class="name_text"><text class="input_need">*</text>详细地址:</text>
   <input class="way_input" bindblur="wayPut" placeholder="街道，楼牌号等" />
 
 </view>

@@ -27,16 +27,25 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        that.setData({
-          descrition: res.data.Data.descrition,
-          opentime: res.data.Data.opentime,
-          prerogative: res.data.Data.prerogative,
-          storetel: res.data.Data.storetel,
-        })
+        if(res.data.Data.IsError==false){
+          that.setData({
+            descrition: res.data.Data.descrition,
+            opentime: res.data.Data.opentime,
+            prerogative: res.data.Data.prerogative,
+            storetel: res.data.Data.storetel,
+          })
+        }else{
+          wx.showToast({
+            title: '获取会员卡详情失败，请退出重试',
+          })
+        }
+        
       },
       fail: function (res) {
         console.log('提交GetCardDetails接口返回失败');
-
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },

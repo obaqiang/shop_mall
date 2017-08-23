@@ -55,18 +55,24 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        that.setData({
-          getvipinfo_data: res.data.Data,
-          isver: false
-        })
+        if (res.data.Data.IsError == false) {
+          
 
-        var clock = setInterval(that.doLoop, 1000); //一秒执行一次
-        that.setData({
-          clock: clock
-        })
+          var clock = setInterval(that.doLoop, 1000); //一秒执行一次
+          that.setData({
+            clock: clock
+          })
+        } else {
+          wx.showToast({
+            title: '获取短信验证码失败，请重试',
+          })
+        }
       },
       fail: function (res) {
         console.log('获取短信验证码接口请求失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -81,6 +87,10 @@ Page({
         duration: 2000
       })
     } else {
+      that.setData({
+        // getvipinfo_data: res.data.Data,
+        isver: false
+      })
       that.VerCodeReg(that.data.phone)
     }
   },
@@ -150,7 +160,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-
+        console.log(res)
         console.log('激活接口请求开始');
         console.log('openid:' + openid);
         console.log('unionid:' + unionid)
@@ -161,11 +171,11 @@ Page({
           wx.showToast({
             title: '激活成功',
           })
-
+          app.globalData.loginfo.data.Data.memberid = res.data.Data.member_id
           app.globalData.loginfo.data.Data.HasCard = true
           app.globalData.loginfo.data.Data.HasGetCard = true
           app.globalData.see_card_status = true
-          wx.navigateTo({
+          wx.switchTab({
             url: '../shop_mine/shop_mine'
           })
         } else {
@@ -264,7 +274,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
     if (app.globalData.loginfo.data.Data.HasCard == true && app.globalData.loginfo.data.Data.HasGetCard == true) {//如果用户已经开好卡，则跳回页面
 
       wx.switchTab({

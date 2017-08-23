@@ -32,6 +32,8 @@ App({
     loginfo:'',
     token: '',
     goods_cho_all:[],
-    goods_cho:[]
+    goods_cho:[],
+    order_confirm_order_id:'',
+    car_cho_if_address:''//控制是否给用户选择送货方式的权利
   }
 })

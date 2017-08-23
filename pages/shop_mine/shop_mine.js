@@ -42,18 +42,21 @@ Page({
   },
 
 
-  getvipinfo: function (vip_id, token) {
+  getvipinfo: function (vip_id) {
     var that = this;
     wx.request({
       url: app.globalData.bd_url + '/api/member/getvipinfo',
       data: {
         vip_id: vip_id,
-        token: token
+       
       },
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'token': app.globalData.token
       },
       success: function (res) {
+        console.log('getvipinfo接口开始');
+        
         console.log(res);
         that.setData({
           getvipinfo_data: res.data.Data,
@@ -154,7 +157,7 @@ Page({
         hascard: app.globalData.loginfo.data.Data.HasCard,
         hasgetcard: app.globalData.loginfo.data.Data.HasGetCard,
       })
-      that.getvipinfo(app.globalData.loginfo.data.Data.vip_id, app.globalData.token);
+      that.getvipinfo(app.globalData.loginfo.data.Data.vip_id);
       that.GetQrCode(app.globalData.storeid, app.globalData.loginfo.data.Data.openid, app.globalData.loginfo.data.Data.unionid)
       that.GetVipDimInfo_SmallProgram(0, app.globalData.loginfo.data.Data.vip_id);
     } else {

@@ -14,10 +14,10 @@
     </view>
 
   </view> -->
-  <view class="address_list" wx:for="{{addressList}}">
-    <text class="address_name">{{item.consignee}}</text>
-    <text class="address_tel">{{item.phone}}</text>
-    <text class="address_more">{{item.province}}{{tiem.city}}{{item.area}}{{item.street}}</text>
+  <view class="address_list" wx:for="{{addressList}}" data-id="{{item.id}}" >
+    <text class="address_name" data-id="{{item.id}}" bindtap="setDefault">{{item.consignee}}</text>
+    <text class="address_tel" data-id="{{item.id}}" bindtap="setDefault">{{item.phone}}</text>
+    <text class="address_more" data-id="{{item.id}}" bindtap="setDefault">{{item.province}}{{tiem.city}}{{item.area}}{{item.street}}</text>
     <view class="cho_area">
       <text class="cho_img" wx:if="{{item.defaultAddress==0}}"></text>
       <image class="cho_img_hook" wx:if="{{item.defaultAddress==1}}" src="http://testimg.bdvip.net/smallprogram/32px_32px_V.png"></image>

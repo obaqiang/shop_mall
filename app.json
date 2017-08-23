@@ -32,7 +32,7 @@
         "selectedIconPath": "image/42px_42px_shangcheng1.png",
         "iconPath": "image/42px_42px_shangcheng2.png",
         "pagePath": "pages/shop_city/shop_city",
-        "text": "商城"
+        "text": "商品"
       },
       {
         "selectedIconPath": "image/42px_42px_gouwuche1.png",
@@ -51,7 +51,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   }
 }

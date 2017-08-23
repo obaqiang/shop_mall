@@ -18,7 +18,7 @@ Page({
     phone: '',
     street: '',
     save_status: false,
-    hidden:false
+    hidden: false
   },
 
   SaveVipAddress: function (province, city, area, street, consignee, phone, open_id) {
@@ -68,10 +68,17 @@ Page({
             url: '../address/address'
           })
 
+        } else {
+          wx.showToast({
+            title: '保存地址失败，请退出重试',
+          })
         }
       },
       fail: function (res) {
         console.log('提交SaveVipAddress接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -142,6 +149,9 @@ Page({
       wx.showToast({
         title: errorMsg,
         duration: 2000
+      })
+      that.setData({
+        phone: ''
       })
     } else {
       that.setData({
@@ -221,9 +231,11 @@ Page({
 
   },
   open: function () {
+    
     this.setData({
       condition: !this.data.condition
     })
+    return;
   },
   onLoad: function () {
     console.log("onLoad");
@@ -257,7 +269,7 @@ Page({
       province: cityData[0].name,
       city: cityData[0].sub[0].name,
       county: cityData[0].sub[0].sub[0].name,
-      hidden:true
+      hidden: true
     })
     console.log('初始化完成');
 

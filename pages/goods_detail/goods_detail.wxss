@@ -17,6 +17,36 @@
   left: 10rpx;
 }
 
+.goods_express_1 {
+  color: #2e74bc;
+  font-size: 20rpx;
+  border: 1rpx solid #2e74bc;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  position: relative;
+  top: -10rpx;
+  left: 10rpx;
+}
+.goods_express_2 {
+  color: #09aa3e;
+  font-size: 20rpx;
+  border: 1rpx solid #09aa3e;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  position: relative;
+  top: -10rpx;
+  left: 10rpx;
+}
+.goods_express_3 {
+  color: #ff9205;
+  font-size: 20rpx;
+  border: 1rpx solid #ff9205;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  position: relative;
+  top: -10rpx;
+  left: 10rpx;
+}
 .goods_stock {
   float: right;
   margin-right: 20rpx;
@@ -63,6 +93,7 @@
 
 .img_list {
   width: 100%;
+ 
 }
 
 .img_desc {

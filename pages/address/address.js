@@ -30,26 +30,36 @@ Page({
       success: function (res) {
         console.log('地址列表')
         console.log(res)
-        that.setData({
-          addressList: res.data.Data.addressList,
-          hidden: true
-        })
-        if (res.data.Data.addressList.length == 0) {
+        if (res.data.Data.IsError==false){
           that.setData({
-            no_address: true
+            addressList: res.data.Data.addressList,
+            hidden: true
           })
-        } else {
-          that.setData({
-            no_address: false
+          if (res.data.Data.addressList.length == 0) {
+            that.setData({
+              no_address: true
+            })
+          } else {
+            that.setData({
+              no_address: false
+            })
+          }
+          console.log(that.data.addressList);
+        }else{
+          wx.showToast({
+            title: '获取地址列表失败，请退出重试',
           })
         }
-        console.log(that.data.addressList);
+
 
 
 
       },
       fail: function (res) {
         console.log('提交GetVipAddressList接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -75,11 +85,21 @@ Page({
           that.setData({
             hidden: true
           })
+          wx.navigateBack({
+            url: '../order_confirm/order_confirm'
+          })
+        }else{
+          wx.showToast({
+            title: '获取默认地址失败，请退出重试',
+          })
         }
 
       },
       fail: function (res) {
         console.log('提交DefaultAddress接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -103,10 +123,17 @@ Page({
           that.setData({
             hidden: true
           })
+        }else{
+          wx.showToast({
+            title: '删除地址失败，请退出重试',
+          })
         }
       },
       fail: function (res) {
         console.log('提交DeleteVipAddress接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
       }
     })
   },
@@ -165,7 +192,7 @@ Page({
     that.DeleteVipAddress(e.currentTarget.dataset.id)
     for (var i = 0; i < co_addressList.length; i++) {
       if (e.currentTarget.dataset.id == co_addressList[i].id) {//设置默认
-        co_addressList.splice(i,1)
+        co_addressList.splice(i, 1)
       }
     }
     that.setData({
@@ -178,8 +205,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    that.GetVipAddressList(app.globalData.loginfo.data.Data.openid)
+
   },
 
   /**
@@ -193,7 +219,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    that.GetVipAddressList(app.globalData.loginfo.data.Data.openid)
   },
 
   /**

@@ -37,7 +37,7 @@
 </view>
 
 
-<view class="card_list list_head" bindtap="cardJump">
+<!-- <view class="card_list list_head" bindtap="cardJump">
   <text class="list_de">余额</text>
   <text class="list_num">￥{{balance_money}}</text>
 </view>
@@ -52,7 +52,7 @@
 <view class="card_list " bindtap="couponJump">
   <text class="list_de">优惠券</text>
   <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>
-</view>
+</view> -->
 <!--<view class="card_list ">
   <text class="list_de">试用门店</text>
   <image class="list_img" src="http://img.bdvip.net/wxsmprogram/15px_24px_c.png"></image>

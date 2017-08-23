@@ -43,6 +43,28 @@ page{
   padding: 5rpx 10rpx;
   border-radius: 10rpx;
 }
+.area_back{
+  position: absolute;
+  top: 20rpx;
+  right: 200rpx;
+  font-size: 30rpx;
+  color: #cb2920;
+  border: 1rpx solid #cb2920;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+.back_already{
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  font-size: 30rpx;
+  color: #999999;
+  border: 1rpx solid #999999;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+  z-index: 2;
+}
 .area_3{
   position: absolute;
   top: 100rpx;
@@ -61,6 +83,14 @@ page{
   right: 50rpx;
   font-size: 40rpx;
   color: #cb2920;
+}
+.area_5_no{
+  position: absolute;
+  top: 90rpx;
+  right: 50rpx;
+  font-size: 40rpx;
+  color: #999999;
+
 }
 .list_body_on{
   float: left;

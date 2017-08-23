@@ -20,6 +20,8 @@ Page({
 
   aTap: function () {
     var that = this
+    app.globalData.car_cho_if_address == 'all'
+    // app.globalData.car_cho_if_address == ''
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       co_goods_cho_all[i].show = true;
@@ -34,6 +36,7 @@ Page({
   },
   bTap: function () {
     var that = this
+    app.globalData.car_cho_if_address == true
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 0) {
@@ -52,6 +55,7 @@ Page({
   },
   cTap: function () {
     var that = this
+    app.globalData.car_cho_if_address == false
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 1) {
@@ -101,7 +105,7 @@ Page({
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (goods_id == co_goods_cho_all[i].goods_id) {
         var num = co_goods_cho_all[i].goods_num
-        if (num > 0) {
+        if (num > 1) {
           num--
           co_goods_cho_all[i].goods_num = num
         } else {
@@ -176,6 +180,25 @@ Page({
 
   // },
 
+  ifAllhook: function () {
+    var that = this
+    var if_all_hook;
+    for (var i = 0; i < that.data.goods_cho_all.length; i++) {
+      if (that.data.goods_cho_all[i].hook_status == false) {
+        if_all_hook = false
+      }
+    }
+    if (if_all_hook==false){
+      that.setData({
+        hook_status_stand:false
+      })
+    }else{
+      that.setData({
+        hook_status_stand: true
+      })
+    }
+  },
+
   getHook: function (e) {
     var that = this
     var goods_id = e.currentTarget.dataset.goods_id
@@ -184,16 +207,20 @@ Page({
       if (goods_id == co_goods_cho_all[i].goods_id) {
         if (co_goods_cho_all[i].hook_status == true) {
           co_goods_cho_all[i].hook_status = false
+          that.data.hook_status_stand = false
         } else {
           co_goods_cho_all[i].hook_status = true
+
         }
 
       }
     }
     that.setData({
-      goods_cho_all: co_goods_cho_all
+      goods_cho_all: co_goods_cho_all,
+      hook_status_stand: that.data.hook_status_stand
     })
     that.calTotal()
+    that.ifAllhook()
     // console.log(that.data.goods_pay);
   },
 
@@ -222,9 +249,9 @@ Page({
       total_money: total_money,
       goods_pay: goods_choose
     })
-    if (app.globalData.goods_cho_all.length==0){
+    if (app.globalData.goods_cho_all.length == 0) {
       that.setData({
-        no_goods:true
+        no_goods: true
       })
     }
   },
@@ -269,6 +296,7 @@ Page({
         if (res.data.Data.IsError == false) {
           // var total_price = that.data.goods_num * that.data.goods_price
           console.log('这里需要的order_id:' + res.data.Data.OrderID)
+          app.globalData.order_confirm_order_id = res.data.Data.OrderID
           wx.navigateTo({
             url: '../order_confirm/order_confirm?order_id=' + res.data.Data.OrderID
           })
@@ -394,6 +422,9 @@ Page({
    */
   onShow: function () {
     var that = this
+    that.setData({
+      hook_status_stand: false
+    })
     console.log(app.globalData.goods_cho_all)
 
     var co_goods_cho_all = app.globalData.goods_cho_all
@@ -422,7 +453,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.car_cho_if_address == ''
   },
 
   /**
