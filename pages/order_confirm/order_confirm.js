@@ -92,6 +92,7 @@ Page({
             res.data.Data.OrderItems[i].goods_name = util.cutstr(res.data.Data.OrderItems[i].goods_name, 55)
 
             goods_num += res.data.Data.OrderItems[i].qty
+            // console.log('啦啦啦:' + app.globalData.car_cho_if_address)
             if (app.globalData.car_cho_if_address == '') {//不是从购物车页面过来
               if (res.data.Data.OrderItems[0].is_locale == 0) {//快递发货
                 that.setData({
@@ -128,6 +129,8 @@ Page({
               })
             }
           }
+          // console.log('我开')
+          console.log(res.data.Data.OrderItems, )
           that.setData({
             order_items: res.data.Data.OrderItems,
             total_price: res.data.Data.amount_payed,
@@ -231,46 +234,58 @@ Page({
     })
   },
 
-  ConfirmOrder: function (order_id) {
-    var that = this;
-    wx.request({
-      url: app.globalData.bd_url + '/api/WxSP/ConfirmOrder',
-      data: {
-        order_id: order_id,
+  // ConfirmOrder: function (order_id) {
+  //   var that = this;
+  //   wx.request({
+  //     url: app.globalData.bd_url + '/api/WxSP/ConfirmOrder',
+  //     data: {
+  //       order_id: order_id,
 
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-        'token': app.globalData.token
-      },
-      success: function (res) {
-        console.log('ConfirmOrder开始')
-        console.log(res);
-        if (res.data.Data.IsError == false) {
-          var send_no = res.data.Data.send_no
-          // wx.showToast({
-          //   title: '取货单号：' + send_no,
-          // })
-          wx.navigateTo({
-            url: '../order_detail/order_detail?order_id=' + order_id
-          })
-        } else {
-          wx.showToast({
-            title: '确认订单失败，请退出重试',
-          })
+  //     },
+  //     method: 'GET',
+  //     header: {
+  //       'content-type': 'application/json',
+  //       'token': app.globalData.token
+  //     },
+  //     success: function (res) {
+  //       console.log('ConfirmOrder开始')
+  //       console.log(res);
+  //       if (res.data.Data.IsError == false) {
+  //         var send_no = res.data.Data.send_no
+  //         // wx.showToast({
+  //         //   title: '取货单号：' + send_no,
+  //         // })
+  //         wx.navigateTo({
+  //           url: '../order_detail/order_detail?order_id=' + order_id
+  //         })
+  //       } else {
+  //         wx.showToast({
+  //           title: '确认订单失败，请退出重试',
+  //         })
+  //       }
+
+  //     },
+  //     fail: function (res) {
+  //       console.log('提交ConfirmOrder接口返回失败');
+  //       wx.showToast({
+  //         title: '网络连接失败，请退出重试',
+  //       })
+  //     }
+  //   })
+  // },
+
+  ifinShopcar: function () {
+    var goods_cho = app.globalData.goods_cho_all;
+    var goods_order_show = that.data.order_items_show
+    for (var i = 0; i < goods_order_show.length; i++) {
+      for (var j = 0; j < goods_cho.length; j++) {
+        if (goods_order_show[i].goods_id == goods_cho[i].goods_id) {
+          goods_cho.splice(i, 1)
         }
-
-      },
-      fail: function (res) {
-        console.log('提交ConfirmOrder接口返回失败');
-        wx.showToast({
-          title: '网络连接失败，请退出重试',
-        })
       }
-    })
+    }
+    app.globalData.goods_cho_all = goods_cho
   },
-
 
   CheckOrder: function (order_id, weixin_pay_no, type) {
     var that = this;
@@ -298,7 +313,7 @@ Page({
           //   url: '../order_detail/order_detail?order_id=' + order_id
           // })
           // that.ConfirmOrder(order_id)
-          app.globalData.car_cho_if_address == ''
+          that.ifinShopcar();
           wx.navigateTo({
             url: '../order_detail/order_detail?order_id=' + order_id
           })
@@ -331,7 +346,7 @@ Page({
         point_money: 0,
         type: 0,
         use_point: '',
-        from_member:1,
+        from_member: 1,
         vip_id: app.globalData.loginfo.data.Data.vip_id,
         receive_id: that.data.receive_id
       },
@@ -353,7 +368,7 @@ Page({
           wx.showToast({
             title: res.data.Data.SuccessMessage,
           })
-          app.globalData.car_cho_if_address == ''
+          that.ifinShopcar();
           wx.navigateTo({
             url: '../order_detail/order_detail?order_id=' + res.data.Data.OrderID
           })
@@ -791,6 +806,19 @@ Page({
           // that.setData({
           //   packages_json: packages_json
           // })
+          var json_data = []
+          var json_data_list = {}
+          for (var i = 0; i < res.data.Data.Recharges.length; i++) {
+            json_data_list.recharge_id = res.data.Data.Recharges[i].id
+            json_data_list.rcorder_id = res.data.Data.Recharges[i].rcorder_id
+            console.log(json_data_list)
+            console.log(json_data)
+            json_data.push(json_data_list)
+          }
+          var json_data_str = JSON.stringify(json_data)
+          that.setData({
+            packages_json: json_data_str
+          })
 
           that.AppBDPay(that.data.total_price, 0, goodslist_json, that.data.packages_json, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
 
@@ -868,7 +896,7 @@ Page({
     })
 
     that.GetOrderItemsByOrderID(that.data.order_id)
-    that.GetPackages(options.order_id, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+    // that.GetPackages(options.order_id, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
     // that.GetTicketPointRedPacket(options.order_id, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
 
   },

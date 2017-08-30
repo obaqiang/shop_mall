@@ -365,9 +365,9 @@ Page({
    */
   onShow: function () {
     var that = this
-    wx.showToast({
-      title: 'lala ',
-    })
+    // wx.showToast({
+    //   title: 'lala ',
+    // })
     that.GetOrdersForSmallProgram(app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id, that.data.type, that.data.pay_status, that.data.status)
   },
 

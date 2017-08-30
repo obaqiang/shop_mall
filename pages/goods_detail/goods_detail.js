@@ -219,7 +219,7 @@ Page({
 
   buyJump: function () {
     var that = this
-
+    app.globalData.car_cho_if_address == ''
     if (that.data.goods_num == 0) {
       that.setData({
         goods_num: 1

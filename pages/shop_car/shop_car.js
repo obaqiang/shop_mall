@@ -20,11 +20,16 @@ Page({
 
   aTap: function () {
     var that = this
-    app.globalData.car_cho_if_address == 'all'
+    app.globalData.car_cho_if_address = 'all'
     // app.globalData.car_cho_if_address == ''
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
-      co_goods_cho_all[i].show = true;
+      if (co_goods_cho_all[i].is_locale == 2) {
+        co_goods_cho_all[i].show = true;
+      }else{
+        co_goods_cho_all[i].show = false;
+      }
+
     }
     that.setData({
       goods_cho_all: co_goods_cho_all,
@@ -32,11 +37,10 @@ Page({
       bhead: 'head_title',
       chead: 'head_title'
     })
-
   },
   bTap: function () {
     var that = this
-    app.globalData.car_cho_if_address == true
+    app.globalData.car_cho_if_address = true
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 0) {
@@ -55,7 +59,7 @@ Page({
   },
   cTap: function () {
     var that = this
-    app.globalData.car_cho_if_address == false
+    app.globalData.car_cho_if_address = false
     var co_goods_cho_all = that.data.goods_cho_all;
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 1) {
@@ -139,6 +143,7 @@ Page({
   },
 
   goPay: function () {
+    console.log('我靠:' + app.globalData.car_cho_if_address)
     var that = this
     if (that.data.total_money == 0) {
       wx.showToast({
@@ -188,11 +193,11 @@ Page({
         if_all_hook = false
       }
     }
-    if (if_all_hook==false){
+    if (if_all_hook == false) {
       that.setData({
-        hook_status_stand:false
+        hook_status_stand: false
       })
-    }else{
+    } else {
       that.setData({
         hook_status_stand: true
       })
@@ -422,6 +427,7 @@ Page({
    */
   onShow: function () {
     var that = this
+    app.globalData.car_cho_if_address = 'all'
     that.setData({
       hook_status_stand: false
     })
@@ -429,17 +435,23 @@ Page({
 
     var co_goods_cho_all = app.globalData.goods_cho_all
     for (var i = 0; i < co_goods_cho_all.length; i++) {
-      co_goods_cho_all[i].show = true
+      if (co_goods_cho_all[i].is_locale == 2) {//第一次进入
+        co_goods_cho_all[i].show = true
+      }
+
       co_goods_cho_all[i].hook_status = false
     }
     if (app.globalData.goods_cho_all.length != 0) {
       that.setData({
         no_goods: false,
-        goods_cho_all: co_goods_cho_all
+        goods_cho_all: co_goods_cho_all,
+        ahead: 'head_title_hover',
+        bhead: 'head_title',
+        chead: 'head_title',
       })
     }
     // console.log(that.data.goods_cho_all);
-    that.aTap();
+
   },
 
   /**
@@ -453,7 +465,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    app.globalData.car_cho_if_address == ''
+    // app.globalData.car_cho_if_address == ''
   },
 
   /**
