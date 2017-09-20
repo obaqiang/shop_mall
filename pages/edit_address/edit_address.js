@@ -19,7 +19,59 @@ Page({
     street: '',
     save_status: false,
     id: '',
-    hidden: false
+    hidden: false,
+    provinces_data: [],
+    provinces_data_areaname: [],
+    provinces_index: '',
+    provinces_data_num_sel: '',
+    areas_data: [],
+    areas_data_areaname: [],
+    areas_index: '',
+    areas_data_num_sel: '',
+    citys_data: [],
+    citys_data_areaname: [],
+    citys_index: '',
+    citys_data_num_sel: '',
+  },
+
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this
+    this.setData({
+      provinces_index: e.detail.value
+    })
+
+    var provinces_data_num_sel = that.data.provinces_data[e.detail.value].areano
+    that.setData({
+      provinces_data_num_sel: provinces_data_num_sel
+    })
+    that.GetCityListByProvinceArea(that.data.provinces_data_num_sel)
+  },
+  bindPickerChange_2: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this
+    this.setData({
+      areas_index: e.detail.value
+    })
+    console.log(that.data.areas_data)
+    var areas_data_num_sel = that.data.areas_data[e.detail.value].areano
+    that.setData({
+      areas_data_num_sel: areas_data_num_sel
+    })
+    that.GetCountyByProvinceCity(areas_data_num_sel)
+  },
+  bindPickerChange_3: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this
+    this.setData({
+      citys_index: e.detail.value
+    })
+
+    var citys_data_num_sel = that.data.citys_data[e.detail.value].areano
+    that.setData({
+      citys_data_num_sel: citys_data_num_sel
+    })
+
   },
 
   SaveVipAddress: function (province, city, area, street, consignee, phone, open_id, id) {
@@ -270,39 +322,127 @@ Page({
       condition: !this.data.condition
     })
   },
+
+  GetProvinceList: function () {//获取省份 
+    var that = this
+    wx.request({
+      url: app.globalData.bd_url + '/api/Discount/GetProvinceList',
+      data: {
+
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+
+      },
+
+      success: function (res) {
+        console.log(res);
+
+        that.setData({
+          provinces_data: res.data.Data
+        })
+        var provinces_data_areaname = []
+        for (var i = 0; i < that.data.provinces_data.length; i++) {
+          provinces_data_areaname.push(that.data.provinces_data[i].areaname)
+
+        }
+        that.setData({
+          provinces_data_areaname: provinces_data_areaname
+        })
+
+      },
+      fail: function (res) {
+        console.log('提交GetProvinceList接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
+      }
+    })
+  },
+  GetCityListByProvinceArea: function (province) {//获取市
+    var that = this
+    wx.request({
+      url: app.globalData.bd_url + '/api/Discount/GetCityListByProvinceArea',
+      data: {
+        province: province
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+
+      },
+
+      success: function (res) {
+        console.log(res);
+
+        that.setData({
+          areas_data: res.data.Data
+        })
+        var areas_data_areaname = []
+        for (var i = 0; i < that.data.areas_data.length; i++) {
+          areas_data_areaname.push(that.data.areas_data[i].areaname)
+
+        }
+        that.setData({
+          areas_data_areaname: areas_data_areaname
+        })
+
+      },
+      fail: function (res) {
+        console.log('提交GetCityListByProvinceArea接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
+      }
+    })
+  },
+
+  GetCountyByProvinceCity: function (city) {//获取区
+    var that = this
+    wx.request({
+      url: app.globalData.bd_url + '/api/Discount/GetCountyByProvinceCity',
+      data: {
+        city: city
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+      },
+
+      success: function (res) {
+        console.log(res);
+
+        that.setData({
+          citys_data: res.data.Data
+        })
+        var citys_data_areaname = []
+        for (var i = 0; i < that.data.citys_data.length; i++) {
+          citys_data_areaname.push(that.data.citys_data[i].areaname)
+
+        }
+        that.setData({
+          citys_data_areaname: citys_data_areaname
+        })
+
+      },
+      fail: function (res) {
+        console.log('提交GetCityListByProvinceArea接口返回失败');
+        wx.showToast({
+          title: '网络连接失败，请退出重试',
+        })
+      }
+    })
+  },
+
+
   onLoad: function (options) {
-    console.log("onLoad");
     var that = this;
-
-    tcity.init(that);
-
-    var cityData = that.data.cityData;
-
-
-    const provinces = [];
-    const citys = [];
-    const countys = [];
-
-    for (let i = 0; i < cityData.length; i++) {
-      provinces.push(cityData[i].name);
-    }
-    console.log('省份完成');
-    for (let i = 0; i < cityData[0].sub.length; i++) {
-      citys.push(cityData[0].sub[i].name)
-    }
-    console.log('city完成');
-    for (let i = 0; i < cityData[0].sub[0].sub.length; i++) {
-      countys.push(cityData[0].sub[0].sub[i].name)
-    }
+    that.GetProvinceList()
 
     that.setData({
-      provinces: provinces,
-      citys: citys,
-      countys: countys,
-      // province: cityData[0].name,
-      // city: cityData[0].sub[0].name,
-      // county: cityData[0].sub[0].sub[0].name,
 
+      hidden: true
     })
     that.GetVipAddressList(app.globalData.loginfo.data.Data.openid, options.id)
 

@@ -180,7 +180,7 @@ Page({
    */
   onShow: function () {
     var that = this;
-
+    
     app.getUserInfo(function (userInfo) {
 
       console.log(userInfo)

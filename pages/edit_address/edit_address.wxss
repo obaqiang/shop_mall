@@ -44,3 +44,7 @@
 .input_need{
   color: #cb2920;
 }
+.provinces{
+  padding-left: 100rpx;
+  line-height: 70rpx;
+}

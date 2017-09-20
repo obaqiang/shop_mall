@@ -9,8 +9,31 @@
 </view>
 <view class="new_name">
   <text class="name_text"><text class="input_need">*</text>所在地区:</text>
-  <view class="address_input" bindtap="open">{{province}}-{{city}}-{{county}}</view>
+  <!-- <view class="address_input" bindtap="open">{{province}}-{{city}}-{{county}}</view> -->
   <!-- <input class="address_input"  placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" /> -->
+  <view class="provinces">
+    <picker bindchange="bindPickerChange" value="{{provinces_index}}" range="{{provinces_data_areaname}}">
+      <view class="picker">
+        省: {{provinces_data_areaname[provinces_index]}}
+      </view>
+    </picker>
+  </view>
+  <view class="provinces">
+    <picker bindchange="bindPickerChange_2" value="{{areas_index}}" range="{{areas_data_areaname}}">
+      <view class="picker">
+        市: {{areas_data_areaname[areas_index]}}
+      </view>
+    </picker>
+  </view>
+  <view class="provinces">
+    <picker bindchange="bindPickerChange_3" value="{{citys_index}}" range="{{citys_data_areaname}}">
+      <view class="picker">
+        区: {{citys_data_areaname[citys_index]}}
+      </view>
+    </picker>
+  </view>
+ 
+
 </view>
 
 <view class="new_name">
@@ -21,7 +44,7 @@
 
 <button class="{{save_status==false?'btn_save':'btn_save_ok'}}" bindtap="addressSave">保存</button>
 
-<view wx:if="{{condition}}" class="citypicker">
+<!-- <view wx:if="{{condition}}" class="citypicker">
   <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
     <view class="cityheader">
       <view bindtap="open" class="city-cancel">取消</view>
@@ -37,7 +60,7 @@
       <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
     </picker-view-column>
   </picker-view>
-</view>
+</view> -->
 <view class="body-view">
   <loading hidden="{{hidden}}" bindchange="loadingChange">
     加载中...

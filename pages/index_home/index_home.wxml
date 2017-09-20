@@ -40,13 +40,13 @@
     <text class="title_text">热销商品</text>
     <text class="title_more" bindtap="goBuy">查看更多</text>
   </view>
-  <view class="hot_goods_list" wx:for="{{goodsdata}}" bindtap="deJump" data-goods_id="{{item.id}}">
-    <image class="hot_goods_list_img" src="{{item.thumb}}" bindtap="deJump" data-goods_id="{{item.id}}"></image>
+  <view class="hot_goods_list" wx:for="{{goodsdata}}" catchtap="deJump" data-goods_id="{{item.id}}">
+    <image class="hot_goods_list_img" src="{{item.thumb}}"  data-goods_id="{{item.id}}"></image>
     <view class="fuck_area">
       <text class="hot_goods_name" bindtap="deJump" data-goods_id="{{item.id}}">{{item.goods_name}}</text>
-      <text class="info_tip_1" wx:if="{{item.is_locale==0}}" bindtap="deJump" data-goods_id="{{item.id}}">快递发货</text>
-      <text class="info_tip_2" wx:if="{{item.is_locale==1}}" bindtap="deJump" data-goods_id="{{item.id}}">到店领取</text>
-      <text class="info_tip_3" wx:if="{{item.is_locale==2}}" bindtap="deJump" data-goods_id="{{item.id}}">快递/到店</text>
+      <text class="info_tip_1" wx:if="{{item.is_locale==0}}"  data-goods_id="{{item.id}}">快递发货</text>
+      <text class="info_tip_2" wx:if="{{item.is_locale==1}}"  data-goods_id="{{item.id}}">到店领取</text>
+      <text class="info_tip_3" wx:if="{{item.is_locale==2}}"  data-goods_id="{{item.id}}">快递/到店</text>
     </view>
     <text class="hot_goods_price">￥{{item.goods_price}}</text>
     <image catchtap="plusGoods" data-goods_price="{{item.goods_price}}" data-goods_name="{{item.goods_name}}" data-goods_desc="{{item.goods_desc}}" data-imgUrls="{{item.thumb}}" data-goods_id="{{item.id}}" data-is_locale="{{item.is_locale}}" class="goods_plus"

@@ -26,7 +26,7 @@ Page({
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 2) {
         co_goods_cho_all[i].show = true;
-      }else{
+      } else {
         co_goods_cho_all[i].show = false;
       }
 
@@ -35,7 +35,8 @@ Page({
       goods_cho_all: co_goods_cho_all,
       ahead: 'head_title_hover',
       bhead: 'head_title',
-      chead: 'head_title'
+      chead: 'head_title',
+      hook_status_stand: false
     })
   },
   bTap: function () {
@@ -54,7 +55,8 @@ Page({
       goods_cho_all: co_goods_cho_all,
       ahead: 'head_title',
       bhead: 'head_title_hover',
-      chead: 'head_title'
+      chead: 'head_title',
+      hook_status_stand: false
     })
   },
   cTap: function () {
@@ -75,7 +77,8 @@ Page({
       goods_cho_all: co_goods_cho_all,
       ahead: 'head_title',
       bhead: 'head_title',
-      chead: 'head_title_hover'
+      chead: 'head_title_hover',
+      hook_status_stand: false
     })
     console.log(that.data.goods_cho_all)
   },
@@ -93,7 +96,14 @@ Page({
       })
     }
     for (var i = 0; i < co_goods_cho_all.length; i++) {
-      co_goods_cho_all[i].hook_status = that.data.hook_status_stand
+      if (that.data.ahead == 'head_title_hover' && co_goods_cho_all[i].is_locale == 2) {
+        co_goods_cho_all[i].hook_status = that.data.hook_status_stand
+      } else if (that.data.bhead == 'head_title_hover' && co_goods_cho_all[i].is_locale == 0) {
+        co_goods_cho_all[i].hook_status = that.data.hook_status_stand
+      } else if (that.data.chead == 'head_title_hover' && co_goods_cho_all[i].is_locale == 1) {
+        co_goods_cho_all[i].hook_status = that.data.hook_status_stand
+      }
+
     }
     that.setData({
       goods_cho_all: co_goods_cho_all
@@ -249,6 +259,8 @@ Page({
     }
     console.log(total_num)
     console.log(total_money)
+
+    total_money = total_money.toFixed(2)
     that.setData({
       total_num: total_num,
       total_money: total_money,
@@ -437,20 +449,21 @@ Page({
     for (var i = 0; i < co_goods_cho_all.length; i++) {
       if (co_goods_cho_all[i].is_locale == 2) {//第一次进入
         co_goods_cho_all[i].show = true
+      } else {
+        co_goods_cho_all[i].show = false
       }
 
       co_goods_cho_all[i].hook_status = false
     }
-    if (app.globalData.goods_cho_all.length != 0) {
-      that.setData({
-        no_goods: false,
-        goods_cho_all: co_goods_cho_all,
-        ahead: 'head_title_hover',
-        bhead: 'head_title',
-        chead: 'head_title',
-      })
-    }
-    // console.log(that.data.goods_cho_all);
+
+    that.setData({
+      no_goods: false,
+      goods_cho_all: co_goods_cho_all,
+      ahead: 'head_title_hover',
+      bhead: 'head_title',
+      chead: 'head_title',
+    })
+
 
   },
 

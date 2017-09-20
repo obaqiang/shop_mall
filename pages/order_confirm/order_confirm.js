@@ -28,7 +28,7 @@ Page({
     order_id: '',
     receive_id: '',
     order_items: [],
-    order_items_show: [],
+    // order_items_show: [],
     packages_json: '',
     hidden: false,
     need_address: false,
@@ -37,7 +37,7 @@ Page({
     pay_text: '微信支付',
     address_text: '快递发货',
     send_way_show: '',
-
+    express_price:''
   },
 
   GetOrderItemsByOrderID: function (orderid) {
@@ -92,7 +92,7 @@ Page({
             res.data.Data.OrderItems[i].goods_name = util.cutstr(res.data.Data.OrderItems[i].goods_name, 55)
 
             goods_num += res.data.Data.OrderItems[i].qty
-            // console.log('啦啦啦:' + app.globalData.car_cho_if_address)
+            console.log('啦啦啦:' + app.globalData.car_cho_if_address)
             if (app.globalData.car_cho_if_address == '') {//不是从购物车页面过来
               if (res.data.Data.OrderItems[0].is_locale == 0) {//快递发货
                 that.setData({
@@ -130,10 +130,12 @@ Page({
             }
           }
           // console.log('我开')
-          console.log(res.data.Data.OrderItems, )
+          console.log(res.data.Data.OrderItems)
+          var total_price = res.data.Data.amount_payed
+          total_price = total_price - that.data.express_price
           that.setData({
             order_items: res.data.Data.OrderItems,
-            total_price: res.data.Data.amount_payed,
+            total_price: total_price,
             goods_num: goods_num,
             hidden: true
           })
@@ -143,6 +145,8 @@ Page({
             title: '获取产品信息失败，请退出重试',
           })
         }
+        // console.log('我在这里')
+        // console.log(that.data.send_way_show)
       },
       fail: function (res) {
         console.log('提交GetOrderItemsByOrderID接口返回失败');
@@ -215,7 +219,8 @@ Page({
               street: res.data.Data.Address.street,
               user_name: res.data.Data.Address.consignee,
               user_tel: res.data.Data.Address.phone,
-              no_address: false
+              no_address: false,
+              express_price: res.data.Data.ExpressPrice
             })
           }
           that.ifCanPay()
@@ -275,16 +280,25 @@ Page({
   // },
 
   ifinShopcar: function () {
+    var that = this
     var goods_cho = app.globalData.goods_cho_all;
-    var goods_order_show = that.data.order_items_show
+    var goods_order_show = that.data.order_items
+    // console.log(goods_order_show)
     for (var i = 0; i < goods_order_show.length; i++) {
       for (var j = 0; j < goods_cho.length; j++) {
-        if (goods_order_show[i].goods_id == goods_cho[i].goods_id) {
-          goods_cho.splice(i, 1)
+        console.log(goods_order_show[i].goods_id)
+
+        if (goods_order_show[i].goods_id == goods_cho[j].goods_id) {
+          console.log(goods_cho[j].goods_id)
+          console.log('进来')
+          goods_cho.splice(j, 1)
         }
       }
     }
+    console.log('啦啦啦啦')
+    console.log(goods_cho)
     app.globalData.goods_cho_all = goods_cho
+    console.log(app.globalData.goods_cho_all)
   },
 
   CheckOrder: function (order_id, weixin_pay_no, type) {
@@ -549,38 +563,69 @@ Page({
       console.log('这这里的receive_id:' + that.data.receive_id)
       that.CreateWeixinOrder(app.globalData.storeid, that.data.order_id, app.globalData.loginfo.data.Data.openid, that.data.receive_id)
 
-    } else {
-      if (that.data.packages_json == "") {
+    } else {//BD卡支付方式 
+      // if (that.data.packages_json == "") {
+      //   wx.showToast({
+      //     title: 'BD卡余额不足',
+      //   })
+      // } else {
+      //   // that.TryBDPay(that.data.order_id, 0, that.data.packages_json, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+      //   // var pays_json = [{
+      //   //   pay_money: that.data.total_price,
+      //   //   pay_id: 99,
+      //   //   pay_name: '卡支付'
+      //   // }]
+      //   // pays_json = JSON.stringify(pays_json)
+      //   // that.CheckOrder_2(that.data.total_price, that.data.total_price, that.data.order_id, '', pays_json)
+      //   console.log(that.data.order_items)
+      //   var goodslist = [];
+      //   for (var i = 0; i < that.data.order_items.length; i++) {
+      //     var goodslist_list = {};
+      //     goodslist_list.id = that.data.order_items[i].goods_id
+      //     goodslist.push(goodslist_list)
+      //   }
+      //   var goodslist_json = JSON.stringify(goodslist)
+      //   console.log(goodslist_json);
+      //   if (!app.globalData.loginfo.data.Data.memberid) {
+      //     wx.showToast({
+      //       title: '您还不是BD卡会员，请选择其他支付方式',
+      //     })
+      //   } else {
+      //     that.GetPackagesByItems(goodslist_json, app.globalData.loginfo.data.Data.memberid, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+      //   }
+
+      // }
+
+      var goodslist = [];
+      for (var i = 0; i < that.data.order_items.length; i++) {
+        var goodslist_list = {};
+        goodslist_list.id = that.data.order_items[i].goods_id
+        goodslist.push(goodslist_list)
+      }
+      var goodslist_json = JSON.stringify(goodslist)
+      if (!app.globalData.loginfo.data.Data.memberid) {
         wx.showToast({
-          title: 'BD卡余额不足',
+          title: '您还不是BD卡会员，请选择其他支付方式',
         })
       } else {
-        // that.TryBDPay(that.data.order_id, 0, that.data.packages_json, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
-        // var pays_json = [{
-        //   pay_money: that.data.total_price,
-        //   pay_id: 99,
-        //   pay_name: '卡支付'
-        // }]
-        // pays_json = JSON.stringify(pays_json)
-        // that.CheckOrder_2(that.data.total_price, that.data.total_price, that.data.order_id, '', pays_json)
-        console.log(that.data.order_items)
-        var goodslist = [];
-        for (var i = 0; i < that.data.order_items.length; i++) {
-          var goodslist_list = {};
-          goodslist_list.id = that.data.order_items[i].goods_id
-          goodslist.push(goodslist_list)
-        }
-        var goodslist_json = JSON.stringify(goodslist)
-        console.log(goodslist_json);
-        if (!app.globalData.loginfo.data.Data.memberid) {
+        that.GetPackagesByItems(goodslist_json, app.globalData.loginfo.data.Data.memberid, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+        console.log(that.data.packages_json)
+        if (that.data.packages_json == "") {
           wx.showToast({
-            title: '您还不是BD卡会员，请选择其他支付方式',
+            title: 'BD卡余额不足',
           })
         } else {
-          that.GetPackagesByItems(goodslist_json, app.globalData.loginfo.data.Data.memberid, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+          that.TryBDPay(that.data.order_id, 0, that.data.packages_json, app.globalData.storeid, app.globalData.loginfo.data.Data.vip_id)
+          var pays_json = [{
+            pay_money: that.data.total_price,
+            pay_id: 99,
+            pay_name: '卡支付'
+          }]
+          pays_json = JSON.stringify(pays_json)
+          that.CheckOrder_2(that.data.total_price, that.data.total_price, that.data.order_id, '', pays_json)
         }
-
       }
+
 
     }
 
@@ -630,85 +675,85 @@ Page({
 
   weixinWay_2: function () {
     var that
-    var order_items_show = []
+    // var order_items_show = []
     if (that.data.set_address == true) {//如果是快递发货
-      for (var i = 0; i < that.data.order_items.length; i++) {
-        if (that.data.order_items[i].is_locale == 0 || that.data.order_items[i].is_locale == 2) {
-          order_items_show.push(that.data.order_items[i])
-        }
-      }
+      // for (var i = 0; i < that.data.order_items.length; i++) {
+      //   if (that.data.order_items[i].is_locale == 0 || that.data.order_items[i].is_locale == 2) {
+      //     order_items_show.push(that.data.order_items[i])
+      //   }
+      // }
       that.setData({
         set_address: false
       })
     } else {//如果是到店领取
-      for (var i = 0; i < that.data.order_items.length; i++) {
-        if (that.data.order_items[i].is_locale == 1 || that.data.order_items[i].is_locale == 2) {
-          order_items_show.push(that.data.order_items[i])
-        }
-      }
+      // for (var i = 0; i < that.data.order_items.length; i++) {
+      //   if (that.data.order_items[i].is_locale == 1 || that.data.order_items[i].is_locale == 2) {
+      //     order_items_show.push(that.data.order_items[i])
+      //   }
+      // }
       that.setData({
         set_address: true
       })
     }
     that.setData({
-      order_items_show: order_items_show,
+      // order_items_show: order_items_show,
       modal_pay_2: false
     })
     that.ifCanPay()
   },
   setAddress: function () {
     var that = this
-    var order_items_show = []
-    for (var i = 0; i < that.data.order_items.length; i++) {
-      if (that.data.order_items[i].is_locale == 0 || that.data.order_items[i].is_locale == 2) {
-        order_items_show.push(that.data.order_items[i])
-      }
-    }
+    // var order_items_show = []
+    // for (var i = 0; i < that.data.order_items.length; i++) {
+    //   if (that.data.order_items[i].is_locale == 0 || that.data.order_items[i].is_locale == 2) {
+    //     order_items_show.push(that.data.order_items[i])
+    //   }
+    // }
     that.setData({
       set_address: true,
-      order_items_show: order_items_show,
+      // order_items_show: order_items_show,
       modal_pay_2: false,
       address_text: '快递发货'
     })
     that.ifCanPay()
-    that.calTotal()
+    // that.calTotal()
   },
   cancelAddress: function () {
     var that = this
-    var order_items_show = []
-    for (var i = 0; i < that.data.order_items.length; i++) {
-      if (that.data.order_items[i].is_locale == 1 || that.data.order_items[i].is_locale == 2) {
-        order_items_show.push(that.data.order_items[i])
-      }
-    }
+    // var order_items_show = []
+    // for (var i = 0; i < that.data.order_items.length; i++) {
+    //   if (that.data.order_items[i].is_locale == 1 || that.data.order_items[i].is_locale == 2) {
+    //     order_items_show.push(that.data.order_items[i])
+    //   }
+    // }
     that.setData({
       set_address: false,
-      order_items_show: order_items_show,
+      // order_items_show: order_items_show,
       modal_pay_2: false,
       address_text: '到店领取'
     })
     that.ifCanPay()
-    that.calTotal()
+    // that.calTotal()
   },
 
-  calTotal: function () {
-    var that = this
-    var total_price = 0;
-    var goods_num = 0;
-    console.log('需要的order_items_show')
-    console.log(that.data.order_items_show);
-    for (var i = 0; i < that.data.order_items_show.length; i++) {
-      goods_num += that.data.order_items_show[i].qty
-      total_price += that.data.order_items_show[i].qty * that.data.order_items_show[i].real_price
-    }
-    that.setData({
-      goods_num: goods_num,
-      total_price: total_price
-    })
-    console.log(that.data.goods_num)
-    console.log(that.data.total_price)
+  // calTotal: function () {
+  //   var that = this
+  //   var total_price = 0;
+  //   var goods_num = 0;
+  //   console.log('需要的order_items_show')
+  //   console.log(that.data.order_items_show);
+  //   for (var i = 0; i < that.data.order_items_show.length; i++) {
+  //     goods_num += that.data.order_items_show[i].qty
+  //     total_price += that.data.order_items_show[i].qty * that.data.order_items_show[i].real_price
+  //   }
+  //   that.setData({
+  //     goods_num: goods_num,
+  //     total_price: total_price
+  //   })
+  //   console.log(that.data.goods_num)
+  //   console.log(that.data.total_price)
 
-  },
+  // },
   GetPackages: function (order_id, store_id, vip_id) {
     var that = this;
     wx.request({
@@ -858,6 +903,7 @@ Page({
           pay_name: '卡支付'
         }]
         pays_json = JSON.stringify(pays_json)
+
         if (res.data.Data.otherpay_money > 0 || res.data.Data.otherpay_money == 0) {
           that.CheckOrder_2(that.data.total_price, that.data.total_price, that.data.order_id, that.data.packages_json, pays_json)
         } else {

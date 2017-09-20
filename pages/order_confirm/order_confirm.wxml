@@ -44,6 +44,11 @@
     <text class="area_right">￥{{total_price}}</text>
 
   </view>
+  <view class="area_1">
+    <text class="area_left">运费</text>
+    <text class="area_right">￥{{express_price}}</text>
+
+  </view>
 
 </view>
 <view class="money_area">

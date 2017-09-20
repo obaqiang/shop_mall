@@ -171,7 +171,7 @@ Page({
           wx.showToast({
             title: '激活成功',
           })
-          app.globalData.loginfo.data.Data.memberid = res.data.Data.member_id
+          app.globalData.loginfo.data.Data.memberid = obj.data.Data.member_id
           app.globalData.loginfo.data.Data.HasCard = true
           app.globalData.loginfo.data.Data.HasGetCard = true
           app.globalData.see_card_status = true

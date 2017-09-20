@@ -68,7 +68,7 @@ Page({
 
     var tel = that.data.tel
 
-    tel = tel.split('，')
+    tel = tel.split(',')
     console.log(tel)
     wx.makePhoneCall({
       phoneNumber: tel[0] //仅为示例，并非真实的电话号码
